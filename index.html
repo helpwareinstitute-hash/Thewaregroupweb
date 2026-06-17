@@ -111,11 +111,13 @@
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            text-decoration: none;
         }
-        .logo-area .logo-icon {
-            font-size: 2rem;
-            color: var(--gold);
+        .logo-area img {
+            height: 50px;
+            width: auto;
+            display: block;
         }
         .logo-area .logo-text {
             font-size: 1.5rem;
@@ -126,6 +128,15 @@
         .logo-area .logo-text span {
             color: var(--gold);
             font-weight: 300;
+        }
+
+        @media (max-width: 600px) {
+            .logo-area img {
+                height: 38px;
+            }
+            .logo-area .logo-text {
+                font-size: 1.1rem;
+            }
         }
 
         .nav-links {
@@ -218,7 +229,7 @@
             }
         }
 
-        /* ===== TRADINGVIEW TICKER TAPE (Exact code as requested) ===== */
+        /* ===== TRADINGVIEW TICKER TAPE ===== */
         .ticker-container {
             width: 100%;
             background: var(--chocolate);
@@ -235,7 +246,6 @@
             width: 100%;
         }
 
-        /* Fix TradingView iframe background */
         .ticker-container .tradingview-widget-container iframe {
             background: var(--chocolate) !important;
         }
@@ -342,7 +352,6 @@
             color: var(--chocolate);
         }
 
-        /* Slide variations */
         .slide-2 {
             background: linear-gradient(145deg, #faf6ed, var(--white));
         }
@@ -350,7 +359,6 @@
             background: linear-gradient(145deg, var(--white), var(--gold-pale));
         }
 
-        /* Slider Controls */
         .slider-controls {
             position: absolute;
             bottom: 25px;
@@ -381,7 +389,6 @@
             transform: scale(1.05);
         }
 
-        /* Dots */
         .slider-dots {
             position: absolute;
             bottom: 25px;
@@ -548,7 +555,6 @@
             transition-delay: 0.45s;
         }
 
-        /* Fix for TradingView iframe background on chocolate theme */
         .ticker-container .tradingview-widget-container iframe {
             background: var(--chocolate) !important;
         }
@@ -562,10 +568,10 @@
     <!-- ===== HEADER (Fixed) ===== -->
     <header>
         <nav class="navbar">
-            <div class="logo-area">
-                <i class="fas fa-crown logo-icon"></i>
+            <a href="#" class="logo-area">
+                <img src="https://i.postimg.cc/1RDFJMZN/the-ware-trade-ticker-wipe-bg.webp" alt="The Ware Group Logo" />
                 <span class="logo-text">The Ware <span>Group</span></span>
-            </div>
+            </a>
 
             <div class="menu-toggle" onclick="toggleMenu()">
                 <span></span>
@@ -582,7 +588,7 @@
             </ul>
         </nav>
 
-        <!-- ===== TRADINGVIEW TICKER TAPE (Exact code as requested) ===== -->
+        <!-- ===== TRADINGVIEW TICKER TAPE ===== -->
         <div class="ticker-container">
             <div class="tradingview-widget-container">
                 <div class="tradingview-widget-container__widget"></div>
@@ -688,14 +694,12 @@
                 </div>
             </div>
 
-            <!-- Slider Dots -->
             <div class="slider-dots" id="sliderDots">
                 <span class="dot active" data-index="0"></span>
                 <span class="dot" data-index="1"></span>
                 <span class="dot" data-index="2"></span>
             </div>
 
-            <!-- Controls -->
             <div class="slider-controls">
                 <button id="prevSlide" aria-label="Previous slide"><i class="fas fa-chevron-left"></i></button>
                 <button id="nextSlide" aria-label="Next slide"><i class="fas fa-chevron-right"></i></button>
@@ -759,7 +763,6 @@
             }
         }
 
-        // Close menu on outside click
         document.addEventListener('click', function(e) {
             const nav = document.getElementById('navLinks');
             const toggle = document.querySelector('.menu-toggle');
@@ -787,19 +790,13 @@
             if (index >= totalSlides) index = 0;
             currentIndex = index;
             slidesWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
-
             dots.forEach((dot, i) => {
                 dot.classList.toggle('active', i === currentIndex);
             });
         }
 
-        function nextSlide() {
-            goToSlide(currentIndex + 1);
-        }
-
-        function prevSlide() {
-            goToSlide(currentIndex - 1);
-        }
+        function nextSlide() { goToSlide(currentIndex + 1); }
+        function prevSlide() { goToSlide(currentIndex - 1); }
 
         dots.forEach((dot) => {
             dot.addEventListener('click', function() {
@@ -808,14 +805,10 @@
             });
         });
 
-        nextBtn.addEventListener('click', function() {
-            nextSlide();
-            resetAutoPlay();
-        });
-        prevBtn.addEventListener('click', function() {
-            prevSlide();
-            resetAutoPlay();
-        });
+        nextBtn.addEventListener('click', function() { nextSlide();
+            resetAutoPlay(); });
+        prevBtn.addEventListener('click', function() { prevSlide();
+            resetAutoPlay(); });
 
         document.addEventListener('keydown', function(e) {
             if (e.key === 'ArrowRight') { nextSlide();
@@ -824,7 +817,6 @@
                 resetAutoPlay(); }
         });
 
-        // Touch / swipe
         let touchStartX = 0;
         let touchEndX = 0;
         const sliderContainer = document.querySelector('.slider-container');
@@ -846,9 +838,7 @@
             autoPlayInterval = setInterval(nextSlide, 5000);
         }
 
-        function resetAutoPlay() {
-            startAutoPlay();
-        }
+        function resetAutoPlay() { startAutoPlay(); }
 
         sliderContainer.addEventListener('mouseenter', function() {
             if (autoPlayInterval) clearInterval(autoPlayInterval);
@@ -860,7 +850,6 @@
         goToSlide(0);
         startAutoPlay();
 
-        // ===== SCROLL ANIMATIONS =====
         const fadeElements = document.querySelectorAll('.fade-up');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -869,7 +858,6 @@
                 }
             });
         }, { threshold: 0.15 });
-
         fadeElements.forEach(el => observer.observe(el));
     </script>
 
