@@ -6,7 +6,7 @@
     <title>The Ware Group – Academy & Investment</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <style>
-        /* ----- RESET & BASE ----- */
+        /* ----- RESET & BASE (FULL WIDTH) ----- */
         * {
             margin: 0;
             padding: 0;
@@ -87,7 +87,7 @@
             color: var(--white);
         }
 
-        /* ===== HEADER (fixed, like reference) ===== */
+        /* ===== HEADER (FULL WIDTH) ===== */
         header {
             position: fixed;
             top: 0;
@@ -103,8 +103,7 @@
             justify-content: space-between;
             align-items: center;
             width: 100%;
-            padding: 10px 24px;
-            max-width: 1300px;
+            padding: 10px 30px;
             margin: 0 auto;
             position: relative;
         }
@@ -137,6 +136,9 @@
             }
             .logo-area .logo-text {
                 font-size: 1.1rem;
+            }
+            .navbar {
+                padding: 8px 15px;
             }
         }
 
@@ -230,7 +232,7 @@
             }
         }
 
-        /* ===== TRADINGVIEW TICKER TAPE ===== */
+        /* ===== TRADINGVIEW TICKER TAPE (FULL WIDTH) ===== */
         .ticker-container {
             width: 100%;
             background: var(--chocolate);
@@ -251,11 +253,9 @@
             background: var(--chocolate) !important;
         }
 
-        /* ===== CAROUSEL / HERO SLIDER ===== */
+        /* ===== CAROUSEL / HERO SLIDER (FULL WIDTH) ===== */
         .hero-slider {
             width: 100%;
-            max-width: 1300px;
-            margin: 0 auto;
             padding: 10px 20px 40px;
             position: relative;
         }
@@ -446,6 +446,9 @@
             .slider-dots {
                 bottom: 15px;
             }
+            .hero-slider {
+                padding: 10px 10px 40px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -461,16 +464,17 @@
             }
         }
 
-        /* ===== FEATURES SECTION ===== */
+        /* ===== FEATURES SECTION (FULL WIDTH) ===== */
         .features-section {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 20px 20px 60px;
+            width: 100%;
+            padding: 20px 30px 60px;
         }
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 1.8rem;
+            max-width: 1300px;
+            margin: 0 auto;
         }
         .feature-card {
             background: var(--white);
@@ -499,16 +503,20 @@
             color: var(--chocolate-light);
         }
 
+        @media (max-width: 768px) {
+            .features-section {
+                padding: 20px 15px 40px;
+            }
+        }
+
         /* ============================================================
-                   FOOTER — CHOCOLATE BACKGROUND (PREMIUM)
-                   ============================================================ */
+           FOOTER — CHOCOLATE BACKGROUND (FULL WIDTH)
+           ============================================================ */
         .footer {
             background: var(--chocolate);
             border-top: 3px solid var(--gold);
-            padding: 3rem 20px 1.5rem;
-            margin: 0 auto;
-            max-width: 1300px;
-            border-radius: 0 0 30px 30px;
+            padding: 3rem 30px 1.5rem;
+            width: 100%;
         }
 
         .footer-grid {
@@ -516,6 +524,9 @@
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2.5rem;
             margin-bottom: 2.5rem;
+            max-width: 1300px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .footer-col h4 {
@@ -612,6 +623,9 @@
             flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
+            max-width: 1300px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .footer-bottom .copy {
@@ -643,7 +657,7 @@
                 gap: 1.5rem;
             }
             .footer {
-                border-radius: 0;
+                padding: 2rem 15px 1.5rem;
             }
         }
 
@@ -866,7 +880,7 @@
     </section>
 
     <!-- ============================================================
-    FOOTER — CHOCOLATE BACKGROUND (PREMIUM)
+    FOOTER — CHOCOLATE BACKGROUND (FULL WIDTH)
     ============================================================ -->
     <footer class="footer">
         <div class="footer-grid">
