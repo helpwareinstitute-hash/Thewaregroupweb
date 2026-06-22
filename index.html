@@ -3,11 +3,44 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<title>The Ware Group – Investment & Academy</title>
+
+<!-- ===== SEO META TAGS ===== -->
+<title>The Ware Group – Best Stock Market Institute in Pune | Trading Academy</title>
+<meta name="description" content="The Ware Group is the best stock market institute in Pune offering share market classes, trading courses, options trading, and technical analysis training. Join India's top trading institute in Pune." />
+<meta name="keywords" content="share market classes in Pune, trading institute in Pune, stock market courses in Pune, best stock market institute in Pune, share market training institute Pune, options trading course in Pune, technical analysis classes in Pune, The Ware Group" />
+<link rel="canonical" href="https://thewaregroup.in/" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="The Ware Group – Best Stock Market Institute in Pune | Trading Academy" />
+<meta property="og:description" content="India's top trading institute in Pune. Learn share market, options trading, technical analysis &amp; SMC from NISM Certified mentors." />
+<meta property="og:url" content="https://thewaregroup.in/" />
+<meta property="og:type" content="website" />
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+<!-- Schema Markup -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "The Ware Group",
+  "description": "Best stock market institute in Pune offering share market classes, trading courses, options trading, and technical analysis training.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Porwal Road, Jai Ganesh Plazza, A-Wing 204, Dhanori Jakat Naka",
+    "addressLocality": "Pune",
+    "addressRegion": "Maharashtra",
+    "postalCode": "411015",
+    "addressCountry": "IN"
+  },
+  "telephone": "+919529023068",
+  "url": "https://thewaregroup.in/"
+}
+</script>
+
 <style>
-/* ----- RESET & BASE (FULL WIDTH) ----- */
+/* ----- RESET & BASE ----- */
 * {
     margin: 0;
     padding: 0;
@@ -36,6 +69,25 @@ body {
     }
 }
 
+/* ----- KEYWORD HIGHLIGHT ----- */
+.keyword-highlight {
+    color: var(--gold);
+    font-weight: 600;
+    position: relative;
+    display: inline-block;
+}
+.keyword-highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--gold);
+    border-radius: 10px;
+    opacity: 0.3;
+}
+
 /* ----- STICKY WHATSAPP & CALL BUTTONS ----- */
 .sticky-buttons {
     position: fixed;
@@ -46,7 +98,6 @@ body {
     flex-direction: column;
     gap: 14px;
 }
-
 .sticky-btn {
     width: 58px;
     height: 58px;
@@ -62,20 +113,9 @@ body {
     position: relative;
     animation: pulse 2.5s infinite;
 }
-
-.sticky-btn.whatsapp {
-    background: #25D366;
-    animation-delay: 0s;
-}
-.sticky-btn.call {
-    background: #ff3131;
-    animation-delay: 0.5s;
-}
-
-.sticky-btn:hover {
-    transform: scale(1.12);
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
-}
+.sticky-btn.whatsapp { background: #25D366; animation-delay: 0s; }
+.sticky-btn.call { background: #ff3131; animation-delay: 0.5s; }
+.sticky-btn:hover { transform: scale(1.12); box-shadow: 0 10px 35px rgba(0,0,0,0.4); }
 
 .sticky-btn .tooltip {
     position: absolute;
@@ -91,9 +131,7 @@ body {
     visibility: hidden;
     transition: all 0.3s;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    letter-spacing: 0.3px;
 }
-
 .sticky-btn .tooltip::after {
     content: '';
     position: absolute;
@@ -104,7 +142,6 @@ body {
     border-style: solid;
     border-color: transparent transparent transparent rgba(0, 0, 0, 0.85);
 }
-
 .sticky-btn:hover .tooltip {
     opacity: 1;
     visibility: visible;
@@ -118,19 +155,9 @@ body {
 }
 
 @media (max-width: 768px) {
-    .sticky-buttons {
-        bottom: 18px;
-        right: 15px;
-        gap: 12px;
-    }
-    .sticky-btn {
-        width: 50px;
-        height: 50px;
-        font-size: 22px;
-    }
-    .sticky-btn .tooltip {
-        display: none;
-    }
+    .sticky-buttons { bottom: 18px; right: 15px; gap: 12px; }
+    .sticky-btn { width: 50px; height: 50px; font-size: 22px; }
+    .sticky-btn .tooltip { display: none; }
 }
 
 /* ----- COLOR VARIABLES ----- */
@@ -161,12 +188,7 @@ body {
     box-shadow: 0 4px 12px rgba(201, 168, 98, 0.3);
     font-size: 0.95rem;
 }
-.btn-gold:hover {
-    background: transparent;
-    color: var(--gold);
-    border-color: var(--gold);
-    box-shadow: 0 8px 20px rgba(201, 168, 98, 0.25);
-}
+.btn-gold:hover { background: transparent; color: var(--gold); border-color: var(--gold); box-shadow: 0 8px 20px rgba(201, 168, 98, 0.25); }
 .btn-outline-chocolate {
     display: inline-block;
     background: transparent;
@@ -180,10 +202,7 @@ body {
     letter-spacing: 0.5px;
     font-size: 0.95rem;
 }
-.btn-outline-chocolate:hover {
-    background: var(--chocolate);
-    color: var(--white);
-}
+.btn-outline-chocolate:hover { background: var(--chocolate); color: var(--white); }
 .btn-outline-white {
     display: inline-block;
     background: transparent;
@@ -197,12 +216,9 @@ body {
     letter-spacing: 0.5px;
     font-size: 0.95rem;
 }
-.btn-outline-white:hover {
-    background: var(--white);
-    color: var(--chocolate);
-}
+.btn-outline-white:hover { background: var(--white); color: var(--chocolate); }
 
-/* ===== HEADER (FULL WIDTH) ===== */
+/* ===== HEADER ===== */
 header {
     position: fixed;
     top: 0;
@@ -212,7 +228,6 @@ header {
     background: var(--white);
     box-shadow: 0 2px 15px rgba(77, 46, 27, 0.08);
 }
-
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -222,39 +237,20 @@ header {
     margin: 0 auto;
     position: relative;
 }
-
 .logo-area {
     display: flex;
     align-items: center;
     gap: 12px;
     text-decoration: none;
 }
-.logo-area img {
-    height: 50px;
-    width: auto;
-    display: block;
-}
-.logo-area .logo-text {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--chocolate);
-    letter-spacing: -0.5px;
-}
-.logo-area .logo-text span {
-    color: var(--gold);
-    font-weight: 300;
-}
+.logo-area img { height: 50px; width: auto; display: block; }
+.logo-area .logo-text { font-size: 1.5rem; font-weight: 700; color: var(--chocolate); letter-spacing: -0.5px; }
+.logo-area .logo-text span { color: var(--gold); font-weight: 300; }
 
 @media (max-width: 600px) {
-    .logo-area img {
-        height: 38px;
-    }
-    .logo-area .logo-text {
-        font-size: 1.1rem;
-    }
-    .navbar {
-        padding: 8px 15px;
-    }
+    .logo-area img { height: 38px; }
+    .logo-area .logo-text { font-size: 1.1rem; }
+    .navbar { padding: 8px 15px; }
 }
 
 .nav-links {
@@ -282,26 +278,12 @@ header {
     border-radius: 10px;
     transition: 0.3s;
 }
-.nav-links li a:hover {
-    color: var(--gold);
-}
-.nav-links li a:hover::after {
-    width: 100%;
-}
-.nav-links .btn-gold {
-    padding: 0.5rem 1.8rem;
-    font-size: 0.85rem;
-}
+.nav-links li a:hover { color: var(--gold); }
+.nav-links li a:hover::after { width: 100%; }
+.nav-links .btn-gold { padding: 0.5rem 1.8rem; font-size: 0.85rem; }
+.nav-links li a.active { color: var(--gold); }
+.nav-links li a.active::after { width: 100%; }
 
-/* Active page highlight */
-.nav-links li a.active {
-    color: var(--gold);
-}
-.nav-links li a.active::after {
-    width: 100%;
-}
-
-/* Mobile Menu Toggle */
 .menu-toggle {
     display: none;
     flex-direction: column;
@@ -310,19 +292,10 @@ header {
     padding: 6px;
     z-index: 10001;
 }
-.menu-toggle span {
-    width: 28px;
-    height: 3px;
-    background: var(--chocolate);
-    border-radius: 3px;
-    transition: 0.3s;
-    display: block;
-}
+.menu-toggle span { width: 28px; height: 3px; background: var(--chocolate); border-radius: 3px; transition: 0.3s; display: block; }
 
 @media screen and (max-width: 1024px) {
-    .menu-toggle {
-        display: flex !important;
-    }
+    .menu-toggle { display: flex !important; }
     .nav-links {
         display: none !important;
         flex-direction: column;
@@ -337,22 +310,10 @@ header {
         z-index: 9999;
         border-top: 2px solid var(--gold-pale);
     }
-    .nav-links.active {
-        display: flex !important;
-    }
-    .nav-links li {
-        margin: 6px 0;
-        width: 100%;
-    }
-    .nav-links li a {
-        display: block;
-        padding: 8px 20px;
-        font-size: 1rem;
-    }
-    .nav-links .btn-gold {
-        display: inline-block;
-        margin: 8px auto;
-    }
+    .nav-links.active { display: flex !important; }
+    .nav-links li { margin: 6px 0; width: 100%; }
+    .nav-links li a { display: block; padding: 8px 20px; font-size: 1rem; }
+    .nav-links .btn-gold { display: inline-block; margin: 8px auto; }
 }
 
 /* ===== TRADINGVIEW TICKER TAPE ===== */
@@ -367,30 +328,11 @@ header {
     align-items: center;
     overflow: hidden;
 }
-
-.ticker-container .tradingview-widget-container {
-    width: 100%;
-}
-
-.ticker-container .tradingview-widget-container iframe {
-    background: var(--chocolate) !important;
-}
+.ticker-container .tradingview-widget-container { width: 100%; }
+.ticker-container .tradingview-widget-container iframe { background: var(--chocolate) !important; }
 
 /* ============================================================
-   MERGED HOMEPAGE CONTENT
-   ============================================================ */
-
-/* ----- SECTION DIVIDER ----- */
-.section-divider {
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    margin: 0;
-    opacity: 0.5;
-}
-
-/* ============================================================
-   HERO SECTION — TRADING THEME BACKGROUND
+   HERO SECTION
    ============================================================ */
 .hero-section {
     min-height: 85vh;
@@ -406,7 +348,6 @@ header {
     width: 100%;
     position: relative;
 }
-
 .hero-section::after {
     content: '';
     position: absolute;
@@ -419,7 +360,6 @@ header {
         radial-gradient(circle at 80% 50%, rgba(201, 168, 98, 0.05) 0%, transparent 50%);
     pointer-events: none;
 }
-
 .hero-section .hero-content {
     max-width: 1300px;
     margin: 0 auto;
@@ -427,7 +367,6 @@ header {
     position: relative;
     z-index: 2;
 }
-
 .hero-section .tag {
     display: inline-block;
     background: var(--gold);
@@ -440,67 +379,220 @@ header {
     text-transform: uppercase;
     margin-bottom: 1.2rem;
 }
-
 .hero-section h1 {
     font-size: clamp(2.8rem, 7vw, 4.5rem);
     font-weight: 700;
-    max-width: 800px;
+    max-width: 900px;
     line-height: 1.1;
 }
-
-.hero-section h1 .highlight {
-    color: var(--gold);
-    border-bottom: 4px solid var(--gold);
-    display: inline-block;
-    padding-bottom: 0.1rem;
-}
-
+.hero-section h1 .highlight { color: var(--gold); border-bottom: 4px solid var(--gold); display: inline-block; padding-bottom: 0.1rem; }
 .hero-section p {
-    max-width: 700px;
-    margin: 20px 0 30px;
+    max-width: 750px;
+    margin: 18px 0 30px;
     opacity: 0.9;
     font-size: 1.15rem;
-    line-height: 1.6;
+    line-height: 1.7;
 }
-
-.hero-section .hero-buttons {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
+.hero-section p .keyword-highlight { color: var(--gold); font-weight: 600; }
+.hero-section .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
 
 @media (max-width: 768px) {
-    .hero-section {
-        min-height: 70vh;
-        padding: 30px 15px 40px;
-        text-align: center;
-        background: 
-            linear-gradient(rgba(15, 10, 8, 0.8), rgba(15, 10, 8, 0.9)),
-            url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800&q=80');
-        background-size: cover;
-        background-position: center;
-    }
-    .hero-section h1 {
-        font-size: 2.2rem;
-    }
-    .hero-section p {
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .hero-section .hero-buttons {
-        justify-content: center;
-    }
+    .hero-section { min-height: 70vh; padding: 30px 15px 40px; text-align: center; background: linear-gradient(rgba(15, 10, 8, 0.8), rgba(15, 10, 8, 0.9)), url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800&q=80'); background-size: cover; background-position: center; }
+    .hero-section h1 { font-size: 2.2rem; }
+    .hero-section p { margin-left: auto; margin-right: auto; }
+    .hero-section .hero-buttons { justify-content: center; }
 }
 
 /* ============================================================
-   ADMISSION FORM SECTION (New)
+   FOUNDER STORY SECTION (IMAGE PROPERLY ADJUSTED)
+   ============================================================ */
+.founder-story-section {
+    width: 100%;
+    padding: 70px 30px;
+    background: linear-gradient(145deg, var(--chocolate-dark), var(--chocolate));
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+.founder-story-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(201, 168, 98, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+.founder-story-wrapper {
+    max-width: 1300px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+.founder-story-wrapper .story-tag {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--chocolate);
+    padding: 6px 20px;
+    border-radius: 40px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+}
+.founder-story-wrapper .story-title {
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+.founder-story-wrapper .story-title .highlight { color: var(--gold); }
+.founder-story-wrapper .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+}
+.founder-story-wrapper .story-text p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1.05rem;
+    line-height: 1.9;
+    margin-bottom: 1.2rem;
+}
+.founder-story-wrapper .story-text p .highlight { color: var(--gold); font-weight: 600; }
+.founder-story-wrapper .story-text .quote-block {
+    background: rgba(201, 168, 98, 0.1);
+    border-left: 4px solid var(--gold);
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    margin: 1.5rem 0;
+}
+.founder-story-wrapper .story-text .quote-block p {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--gold-light);
+    margin-bottom: 0;
+}
+.founder-story-wrapper .story-text .quote-block .quote-author {
+    font-style: normal;
+    color: var(--gold);
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+
+/* Founder Image Card - IMAGE PROPERLY ADJUSTED */
+.founder-story-wrapper .story-image .founder-card {
+    background: var(--white);
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    border: 2px solid rgba(201, 168, 98, 0.2);
+}
+.founder-story-wrapper .story-image .founder-card .founder-img-wrapper {
+    width: 100%;
+    height: 380px;
+    overflow: hidden;
+    background: var(--chocolate-dark);
+}
+.founder-story-wrapper .story-image .founder-card .founder-img-wrapper img { 
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    object-position: top center;
+    background: var(--chocolate-dark);
+}
+.founder-story-wrapper .story-image .founder-card .card-body {
+    padding: 1.5rem 2rem 2rem;
+    text-align: center;
+    background: var(--white);
+}
+.founder-story-wrapper .story-image .founder-card .card-body .name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--chocolate);
+}
+.founder-story-wrapper .story-image .founder-card .card-body .title {
+    color: var(--chocolate-light);
+    font-size: 0.9rem;
+    margin-top: 2px;
+}
+.founder-story-wrapper .story-image .founder-card .card-body .nism-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--chocolate);
+    font-weight: 700;
+    font-size: 0.7rem;
+    padding: 4px 16px;
+    border-radius: 40px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.founder-story-wrapper .story-image .founder-card .card-body .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 12px;
+}
+.founder-story-wrapper .story-image .founder-card .card-body .social-links a {
+    color: var(--chocolate-light);
+    font-size: 1.1rem;
+    transition: 0.3s ease;
+}
+.founder-story-wrapper .story-image .founder-card .card-body .social-links a:hover {
+    color: var(--gold);
+    transform: scale(1.15);
+}
+
+/* Stats inside story */
+.founder-story-wrapper .story-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.founder-story-wrapper .story-stats .stat-item { text-align: center; }
+.founder-story-wrapper .story-stats .stat-item h4 {
+    color: var(--gold);
+    font-size: 2rem;
+    font-weight: 700;
+}
+.founder-story-wrapper .story-stats .stat-item p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+}
+
+@media (max-width: 900px) {
+    .founder-story-wrapper .story-grid { grid-template-columns: 1fr; gap: 30px; }
+    .founder-story-section { padding: 40px 15px; }
+    .founder-story-wrapper .story-stats { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .founder-story-wrapper .story-stats .stat-item h4 { font-size: 1.5rem; }
+    .founder-story-wrapper .story-image .founder-card .founder-img-wrapper { height: 320px; }
+}
+@media (max-width: 500px) {
+    .founder-story-wrapper .story-stats { grid-template-columns: 1fr; gap: 15px; }
+    .founder-story-wrapper .story-text .quote-block { padding: 1rem 1.2rem; }
+    .founder-story-wrapper .story-text .quote-block p { font-size: 0.95rem; }
+    .founder-story-wrapper .story-image .founder-card .card-body { padding: 1rem 1.2rem 1.5rem; }
+    .founder-story-wrapper .story-image .founder-card .card-body .name { font-size: 1.2rem; }
+    .founder-story-wrapper .story-image .founder-card .founder-img-wrapper { height: 280px; }
+}
+
+/* ============================================================
+   ADMISSION FORM SECTION
    ============================================================ */
 .admission-section {
     width: 100%;
     padding: 70px 30px;
     background: var(--white);
 }
-
 .admission-wrapper {
     max-width: 1300px;
     margin: 0 auto;
@@ -509,7 +601,6 @@ header {
     gap: 50px;
     align-items: start;
 }
-
 .admission-text .tag {
     display: inline-block;
     background: var(--gold-pale);
@@ -522,29 +613,21 @@ header {
     letter-spacing: 0.5px;
     margin-bottom: 15px;
 }
-
 .admission-text h2 {
     font-size: clamp(2rem, 3vw, 2.8rem);
     color: var(--chocolate);
     line-height: 1.2;
     margin-bottom: 1rem;
 }
-
-.admission-text h2 .highlight {
-    color: var(--gold);
-}
-
+.admission-text h2 .highlight { color: var(--gold); }
 .admission-text p {
     color: var(--chocolate-light);
     font-size: 1.05rem;
     line-height: 1.8;
     margin-bottom: 1.5rem;
 }
-
-.admission-text .features-list {
-    list-style: none;
-}
-
+.admission-text p .keyword-highlight { color: var(--gold); font-weight: 600; }
+.admission-text .features-list { list-style: none; }
 .admission-text .features-list li {
     color: var(--chocolate-light);
     font-size: 1rem;
@@ -553,13 +636,7 @@ header {
     align-items: center;
     gap: 12px;
 }
-
-.admission-text .features-list li i {
-    color: var(--gold);
-    font-size: 1.1rem;
-    width: 24px;
-    text-align: center;
-}
+.admission-text .features-list li i { color: var(--gold); font-size: 1.1rem; width: 24px; text-align: center; }
 
 /* Form Styles */
 .admission-form {
@@ -569,25 +646,9 @@ header {
     box-shadow: 0 20px 50px rgba(77, 46, 27, 0.08);
     border: 1px solid var(--gold-light);
 }
-
-.admission-form .form-title {
-    font-size: 1.5rem;
-    color: var(--chocolate);
-    margin-bottom: 0.3rem;
-    text-align: center;
-}
-
-.admission-form .form-subtitle {
-    color: var(--chocolate-light);
-    text-align: center;
-    font-size: 0.9rem;
-    margin-bottom: 1.8rem;
-}
-
-.admission-form .form-group {
-    margin-bottom: 1.2rem;
-}
-
+.admission-form .form-title { font-size: 1.5rem; color: var(--chocolate); margin-bottom: 0.3rem; text-align: center; }
+.admission-form .form-subtitle { color: var(--chocolate-light); text-align: center; font-size: 0.9rem; margin-bottom: 1.8rem; }
+.admission-form .form-group { margin-bottom: 1.2rem; }
 .admission-form .form-group label {
     display: block;
     font-size: 0.85rem;
@@ -595,11 +656,7 @@ header {
     color: var(--chocolate);
     margin-bottom: 5px;
 }
-
-.admission-form .form-group label .required {
-    color: #ff3131;
-}
-
+.admission-form .form-group label .required { color: #ff3131; }
 .admission-form .form-group input,
 .admission-form .form-group select,
 .admission-form .form-group textarea {
@@ -613,7 +670,6 @@ header {
     transition: 0.3s ease;
     font-family: 'Poppins', sans-serif;
 }
-
 .admission-form .form-group input:focus,
 .admission-form .form-group select:focus,
 .admission-form .form-group textarea:focus {
@@ -621,24 +677,8 @@ header {
     border-color: var(--gold);
     box-shadow: 0 0 0 4px rgba(201, 168, 98, 0.15);
 }
-
-.admission-form .form-group textarea {
-    resize: vertical;
-    min-height: 80px;
-}
-
-.admission-form .form-group .optional {
-    font-size: 0.75rem;
-    color: var(--chocolate-light);
-    font-weight: 400;
-}
-
-.admission-form .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
-
+.admission-form .form-group textarea { resize: vertical; min-height: 80px; }
+.admission-form .form-group .optional { font-size: 0.75rem; color: var(--chocolate-light); font-weight: 400; }
 .admission-form .submit-btn {
     width: 100%;
     background: var(--gold);
@@ -654,45 +694,22 @@ header {
     letter-spacing: 0.5px;
     margin-top: 5px;
 }
-
-.admission-form .submit-btn:hover {
-    background: var(--chocolate);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(77, 46, 27, 0.2);
-}
-
-.admission-form .submit-btn i {
-    margin-right: 8px;
-}
+.admission-form .submit-btn:hover { background: var(--chocolate); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(77, 46, 27, 0.2); }
+.admission-form .submit-btn i { margin-right: 8px; }
 
 @media (max-width: 900px) {
-    .admission-wrapper {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-    .admission-section {
-        padding: 40px 15px;
-    }
-    .admission-form {
-        padding: 1.8rem 1.5rem 2rem;
-    }
+    .admission-wrapper { grid-template-columns: 1fr; gap: 30px; }
+    .admission-section { padding: 40px 15px; }
+    .admission-form { padding: 1.8rem 1.5rem 2rem; }
 }
 
-@media (max-width: 600px) {
-    .admission-form .form-row {
-        grid-template-columns: 1fr;
-        gap: 0;
-    }
-}
-
-/* ===== STATS SECTION ===== */
+/* ===== STATS SECTION (WITH COUNTING EFFECT) ===== */
 .stats-section {
     width: 100%;
     background: var(--chocolate);
     color: var(--white);
     padding: 50px 30px;
 }
-
 .stats-grid {
     max-width: 1300px;
     margin: 0 auto;
@@ -700,17 +717,18 @@ header {
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 }
-
-.stat-item {
-    text-align: center;
+.stat-item { text-align: center; }
+.stat-item .count-number {
+    color: var(--gold);
+    font-size: 2.2rem;
+    font-weight: 700;
+    display: inline-block;
 }
-
-.stat-item h3 {
+.stat-item .count-suffix {
     color: var(--gold);
     font-size: 2.2rem;
     font-weight: 700;
 }
-
 .stat-item p {
     color: rgba(255, 255, 255, 0.75);
     font-size: 0.95rem;
@@ -718,24 +736,23 @@ header {
 }
 
 @media (max-width: 768px) {
-    .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-    }
-    .stats-section {
-        padding: 30px 15px;
-    }
-    .stat-item h3 {
-        font-size: 1.6rem;
-    }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+    .stats-section { padding: 30px 15px; }
+    .stat-item .count-number, .stat-item .count-suffix { font-size: 1.6rem; }
 }
 
-/* ----- ABOUT SECTION ----- */
-.about-section {
+/* ============================================================
+   OTHER SECTIONS
+   ============================================================ */
+.section-divider {
     width: 100%;
-    padding: 70px 30px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0;
+    opacity: 0.5;
 }
 
+.about-section { width: 100%; padding: 70px 30px; }
 .about-grid {
     max-width: 1300px;
     margin: 0 auto;
@@ -744,13 +761,7 @@ header {
     gap: 50px;
     align-items: center;
 }
-
-.about-grid img {
-    width: 100%;
-    border-radius: 25px;
-    box-shadow: 0 20px 50px rgba(77, 46, 27, 0.1);
-}
-
+.about-grid img { width: 100%; border-radius: 25px; box-shadow: 0 20px 50px rgba(77, 46, 27, 0.1); }
 .about-text .tag {
     display: inline-block;
     background: var(--gold-pale);
@@ -763,68 +774,33 @@ header {
     letter-spacing: 0.5px;
     margin-bottom: 15px;
 }
-
 .about-text h2 {
     font-size: clamp(2rem, 3vw, 2.8rem);
     color: var(--chocolate);
     line-height: 1.2;
 }
-
-.about-text h2 .highlight {
-    color: var(--gold);
-}
-
+.about-text h2 .highlight { color: var(--gold); }
 .about-text p {
     color: var(--chocolate-light);
     font-size: 1.05rem;
     line-height: 1.8;
     margin-top: 20px;
 }
+.about-text p .keyword-highlight { color: var(--gold); font-weight: 600; }
 
 @media (max-width: 900px) {
-    .about-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-    .about-section {
-        padding: 40px 15px;
-    }
-    .about-text {
-        order: 2;
-    }
-    .about-grid img {
-        order: 1;
-    }
+    .about-grid { grid-template-columns: 1fr; gap: 30px; }
+    .about-section { padding: 40px 15px; }
+    .about-text { order: 2; }
+    .about-grid img { order: 1; }
 }
 
-/* ----- COURSES SECTION ----- */
-.courses-section {
-    width: 100%;
-    padding: 70px 30px;
-    background: var(--white);
-}
-
-.section-title {
-    text-align: center;
-    max-width: 1300px;
-    margin: 0 auto 3rem;
-}
-
-.section-title h2 {
-    font-size: clamp(2rem, 3.5vw, 2.8rem);
-    color: var(--chocolate);
-}
-
-.section-title h2 .highlight {
-    color: var(--gold);
-}
-
-.section-title p {
-    color: var(--chocolate-light);
-    font-size: 1.1rem;
-    margin-top: 0.5rem;
-}
-
+/* Courses */
+.courses-section { width: 100%; padding: 70px 30px; background: var(--white); }
+.section-title { text-align: center; max-width: 1300px; margin: 0 auto 3rem; }
+.section-title h2 { font-size: clamp(2rem, 3.5vw, 2.8rem); color: var(--chocolate); }
+.section-title h2 .highlight { color: var(--gold); }
+.section-title p { color: var(--chocolate-light); font-size: 1.1rem; margin-top: 0.5rem; }
 .courses-grid {
     max-width: 1300px;
     margin: 0 auto;
@@ -832,7 +808,6 @@ header {
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
 }
-
 .course-card {
     background: var(--off-white);
     padding: 2rem 1.8rem;
@@ -841,129 +816,39 @@ header {
     border-left: 6px solid var(--gold);
     transition: 0.3s ease;
 }
-
-.course-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 16px 32px rgba(201, 168, 98, 0.15);
-}
-
-.course-card .icon {
-    font-size: 2rem;
-    color: var(--gold);
-    margin-bottom: 0.8rem;
-}
-
-.course-card h3 {
-    color: var(--chocolate);
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-}
-
-.course-card p {
-    color: var(--chocolate-light);
-    font-size: 0.95rem;
-    line-height: 1.6;
-}
-
-@media (max-width: 900px) {
-    .courses-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .courses-section {
-        padding: 40px 15px;
-    }
-}
-
-@media (max-width: 600px) {
-    .courses-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* ----- FOUNDER SECTION ----- */
-.founder-section {
-    width: 100%;
-    padding: 70px 30px;
-    background: linear-gradient(145deg, var(--gold-pale), var(--white));
-}
-
-.founder-grid {
-    max-width: 1300px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-    align-items: center;
-}
-
-.founder-grid img {
-    width: 100%;
-    border-radius: 25px;
-    box-shadow: 0 20px 50px rgba(77, 46, 27, 0.1);
-}
-
-.founder-text .tag {
+.course-card:hover { transform: translateY(-6px); box-shadow: 0 16px 32px rgba(201, 168, 98, 0.15); }
+.course-card .icon { font-size: 2rem; color: var(--gold); margin-bottom: 0.8rem; }
+.course-card h3 { color: var(--chocolate); font-size: 1.2rem; margin-bottom: 0.5rem; }
+.course-card p { color: var(--chocolate-light); font-size: 0.95rem; line-height: 1.6; }
+.course-card .course-tag {
     display: inline-block;
-    background: var(--gold);
-    color: var(--white);
-    padding: 6px 16px;
-    border-radius: 40px;
-    font-size: 0.75rem;
+    background: var(--gold-pale);
+    color: var(--chocolate);
+    font-size: 0.6rem;
     font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 40px;
+    margin-top: 8px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    margin-bottom: 15px;
-}
-
-.founder-text h2 {
-    font-size: clamp(2rem, 3vw, 2.8rem);
-    color: var(--chocolate);
-    line-height: 1.2;
-}
-
-.founder-text h2 .highlight {
-    color: var(--gold);
-}
-
-.founder-text p {
-    color: var(--chocolate-light);
-    font-size: 1.05rem;
-    line-height: 1.8;
-    margin-top: 20px;
 }
 
 @media (max-width: 900px) {
-    .founder-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-    .founder-section {
-        padding: 40px 15px;
-    }
+    .courses-grid { grid-template-columns: repeat(2, 1fr); }
+    .courses-section { padding: 40px 15px; }
 }
+@media (max-width: 600px) { .courses-grid { grid-template-columns: 1fr; } }
 
-/* ----- INVESTMENT SOLUTIONS ----- */
+/* Investment */
 .invest-section {
     width: 100%;
     padding: 70px 30px;
     background: var(--gold-pale);
     text-align: center;
 }
-
-.invest-section .invest-content {
-    max-width: 1300px;
-    margin: 0 auto;
-}
-
-.invest-section h2 {
-    font-size: clamp(2rem, 3.5vw, 2.8rem);
-    color: var(--chocolate);
-}
-
-.invest-section h2 .highlight {
-    color: var(--gold);
-}
-
+.invest-section .invest-content { max-width: 1300px; margin: 0 auto; }
+.invest-section h2 { font-size: clamp(2rem, 3.5vw, 2.8rem); color: var(--chocolate); }
+.invest-section h2 .highlight { color: var(--gold); }
 .invest-section p {
     color: var(--chocolate-light);
     font-size: 1.1rem;
@@ -971,20 +856,10 @@ header {
     margin: 1rem auto 2rem;
     line-height: 1.6;
 }
+@media (max-width: 768px) { .invest-section { padding: 40px 15px; } }
 
-@media (max-width: 768px) {
-    .invest-section {
-        padding: 40px 15px;
-    }
-}
-
-/* ----- TESTIMONIALS ----- */
-.testimonials-section {
-    width: 100%;
-    padding: 70px 30px;
-    background: var(--white);
-}
-
+/* Testimonials */
+.testimonials-section { width: 100%; padding: 70px 30px; background: var(--white); }
 .testimonials-grid {
     max-width: 1300px;
     margin: 0 auto;
@@ -992,7 +867,6 @@ header {
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
 }
-
 .testimonial-card {
     background: var(--off-white);
     padding: 2rem;
@@ -1001,59 +875,24 @@ header {
     border: 1px solid var(--gold-light);
     transition: 0.3s ease;
 }
-
-.testimonial-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 16px 32px rgba(201, 168, 98, 0.15);
-}
-
-.testimonial-card .stars {
-    color: var(--gold);
-    font-size: 1.2rem;
-    margin-bottom: 0.8rem;
-}
-
-.testimonial-card p {
-    color: var(--chocolate-light);
-    font-size: 1rem;
-    line-height: 1.7;
-    font-style: italic;
-}
-
-.testimonial-card .author {
-    color: var(--chocolate);
-    font-weight: 600;
-    margin-top: 1rem;
-    font-style: normal;
-}
+.testimonial-card:hover { transform: translateY(-6px); box-shadow: 0 16px 32px rgba(201, 168, 98, 0.15); }
+.testimonial-card .stars { color: var(--gold); font-size: 1.2rem; margin-bottom: 0.8rem; }
+.testimonial-card p { color: var(--chocolate-light); font-size: 1rem; line-height: 1.7; font-style: italic; }
+.testimonial-card .author { color: var(--chocolate); font-weight: 600; margin-top: 1rem; font-style: normal; }
 
 @media (max-width: 900px) {
-    .testimonials-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-    .testimonials-section {
-        padding: 40px 15px;
-    }
+    .testimonials-grid { grid-template-columns: 1fr 1fr; }
+    .testimonials-section { padding: 40px 15px; }
 }
+@media (max-width: 600px) { .testimonials-grid { grid-template-columns: 1fr; } }
 
-@media (max-width: 600px) {
-    .testimonials-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* ----- FAQ SECTION ----- */
+/* FAQ */
 .faq-section {
     width: 100%;
     padding: 70px 30px;
     background: linear-gradient(145deg, var(--gold-pale), var(--white));
 }
-
-.faq-grid {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
+.faq-grid { max-width: 800px; margin: 0 auto; }
 .faq-item {
     background: var(--white);
     padding: 1.5rem 2rem;
@@ -1063,34 +902,15 @@ header {
     border-left: 4px solid var(--gold);
     transition: 0.3s ease;
 }
-
-.faq-item:hover {
-    border-left-color: var(--chocolate);
-}
-
-.faq-item strong {
-    color: var(--chocolate);
-    font-size: 1.05rem;
-    display: block;
-    margin-bottom: 5px;
-}
-
-.faq-item p {
-    color: var(--chocolate-light);
-    font-size: 0.95rem;
-    line-height: 1.6;
-}
-
+.faq-item:hover { border-left-color: var(--chocolate); }
+.faq-item strong { color: var(--chocolate); font-size: 1.05rem; display: block; margin-bottom: 5px; }
+.faq-item p { color: var(--chocolate-light); font-size: 0.95rem; line-height: 1.6; }
 @media (max-width: 768px) {
-    .faq-section {
-        padding: 40px 15px;
-    }
-    .faq-item {
-        padding: 1.2rem 1.5rem;
-    }
+    .faq-section { padding: 40px 15px; }
+    .faq-item { padding: 1.2rem 1.5rem; }
 }
 
-/* ----- CTA SECTION ----- */
+/* CTA */
 .cta-section {
     width: 100%;
     padding: 70px 30px;
@@ -1098,21 +918,9 @@ header {
     color: var(--white);
     text-align: center;
 }
-
-.cta-content {
-    max-width: 1300px;
-    margin: 0 auto;
-}
-
-.cta-content h2 {
-    font-size: clamp(2rem, 3.5vw, 2.8rem);
-    color: var(--white);
-}
-
-.cta-content h2 .highlight {
-    color: var(--gold);
-}
-
+.cta-content { max-width: 1300px; margin: 0 auto; }
+.cta-content h2 { font-size: clamp(2rem, 3.5vw, 2.8rem); color: var(--white); }
+.cta-content h2 .highlight { color: var(--gold); }
 .cta-content p {
     color: rgba(255, 255, 255, 0.8);
     font-size: 1.1rem;
@@ -1120,22 +928,11 @@ header {
     margin: 1rem auto 2rem;
     line-height: 1.6;
 }
-
-.cta-content .cta-buttons {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-@media (max-width: 768px) {
-    .cta-section {
-        padding: 40px 15px;
-    }
-}
+.cta-content .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+@media (max-width: 768px) { .cta-section { padding: 40px 15px; } }
 
 /* ============================================================
-   FOOTER — CHOCOLATE BACKGROUND (FULL WIDTH)
+   FOOTER
    ============================================================ */
 .footer {
     background: var(--chocolate-dark);
@@ -1143,7 +940,6 @@ header {
     padding: 3rem 30px 1.5rem;
     width: 100%;
 }
-
 .footer-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -1153,7 +949,6 @@ header {
     margin-left: auto;
     margin-right: auto;
 }
-
 .footer-col h4 {
     color: var(--gold);
     font-size: 1.1rem;
@@ -1162,7 +957,6 @@ header {
     position: relative;
     padding-bottom: 0.5rem;
 }
-
 .footer-col h4::after {
     content: '';
     position: absolute;
@@ -1173,33 +967,16 @@ header {
     background: var(--gold);
     border-radius: 10px;
 }
-
-.footer-col ul {
-    list-style: none;
-}
-
-.footer-col ul li {
-    margin-bottom: 0.7rem;
-}
-
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 0.7rem; }
 .footer-col ul li a {
     color: rgba(255, 255, 255, 0.75);
     text-decoration: none;
     font-size: 0.95rem;
     transition: 0.2s;
 }
-
-.footer-col ul li a:hover {
-    color: var(--gold);
-    padding-left: 5px;
-}
-
-.footer-col p {
-    color: rgba(255, 255, 255, 0.75);
-    font-size: 0.95rem;
-    margin-bottom: 0.5rem;
-}
-
+.footer-col ul li a:hover { color: var(--gold); padding-left: 5px; }
+.footer-col p { color: rgba(255, 255, 255, 0.75); font-size: 0.95rem; margin-bottom: 0.5rem; }
 .footer-col .phone-link {
     color: var(--gold);
     font-size: 1.2rem;
@@ -1208,39 +985,21 @@ header {
     display: inline-block;
     margin-top: 5px;
 }
-
-.footer-col .phone-link:hover {
-    color: var(--white);
-}
-
+.footer-col .phone-link:hover { color: var(--white); }
 .footer-col .address {
     color: rgba(255, 255, 255, 0.7);
     font-size: 0.9rem;
     line-height: 1.8;
 }
-
-.footer-col .address i {
-    color: var(--gold);
-    width: 20px;
-}
-
-.footer-col .brand-name {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--white);
-}
-
-.footer-col .brand-name span {
-    color: var(--gold);
-}
-
+.footer-col .address i { color: var(--gold); width: 20px; }
+.footer-col .brand-name { font-size: 1.4rem; font-weight: 700; color: var(--white); }
+.footer-col .brand-name span { color: var(--gold); }
 .footer-col .brand-desc {
     color: rgba(255, 255, 255, 0.65);
     font-size: 0.9rem;
     margin-top: 0.8rem;
     line-height: 1.6;
 }
-
 .footer-bottom {
     border-top: 1px solid rgba(255, 255, 255, 0.15);
     padding-top: 1.5rem;
@@ -1252,16 +1011,8 @@ header {
     margin-left: auto;
     margin-right: auto;
 }
-
-.footer-bottom .copy {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.5);
-}
-
-.footer-bottom .copy strong {
-    color: var(--gold);
-}
-
+.footer-bottom .copy { font-size: 0.85rem; color: rgba(255, 255, 255, 0.5); }
+.footer-bottom .copy strong { color: var(--gold); }
 .footer-bottom .socials a {
     color: rgba(255, 255, 255, 0.6);
     margin-left: 1.5rem;
@@ -1269,40 +1020,17 @@ header {
     transition: 0.2s;
     text-decoration: none;
 }
+.footer-bottom .socials a:hover { color: var(--gold); transform: scale(1.15); }
 
-.footer-bottom .socials a:hover {
-    color: var(--gold);
-    transform: scale(1.15);
-}
-
-/* Footer Responsive */
 @media (max-width: 768px) {
-    .footer-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-    }
-    .footer {
-        padding: 2rem 15px 1.5rem;
-    }
+    .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    .footer { padding: 2rem 15px 1.5rem; }
 }
-
 @media (max-width: 500px) {
-    .footer-grid {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-    .footer-col h4::after {
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    .footer-bottom {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-    }
-    .footer-bottom .socials a {
-        margin: 0 0.8rem;
-    }
+    .footer-grid { grid-template-columns: 1fr; text-align: center; }
+    .footer-col h4::after { left: 50%; transform: translateX(-50%); }
+    .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+    .footer-bottom .socials a { margin: 0 0.8rem; }
 }
 
 /* ===== ANIMATIONS ===== */
@@ -1311,26 +1039,13 @@ header {
     transform: translateY(30px);
     transition: opacity 0.7s ease, transform 0.7s ease;
 }
-.fade-up.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-.delay-1 {
-    transition-delay: 0.15s;
-}
-.delay-2 {
-    transition-delay: 0.3s;
-}
-.delay-3 {
-    transition-delay: 0.45s;
-}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+.delay-1 { transition-delay: 0.15s; }
+.delay-2 { transition-delay: 0.3s; }
+.delay-3 { transition-delay: 0.45s; }
 
-.ticker-container .tradingview-widget-container iframe {
-    background: var(--chocolate) !important;
-}
-.ticker-container .tradingview-widget-container {
-    background: var(--chocolate) !important;
-}
+.ticker-container .tradingview-widget-container iframe { background: var(--chocolate) !important; }
+.ticker-container .tradingview-widget-container { background: var(--chocolate) !important; }
 </style>
 </head>
 <body>
@@ -1347,20 +1062,16 @@ header {
     </a>
 </div>
 
-<!-- ===== HEADER (Fixed) ===== -->
+<!-- ===== HEADER ===== -->
 <header>
     <nav class="navbar">
         <a href="http://thewaregroup.in/#" class="logo-area">
             <img src="https://i.postimg.cc/1RDFJMZN/the-ware-trade-ticker-wipe-bg.webp" alt="The Ware Group Logo" />
             <span class="logo-text">The Ware <span>Group</span></span>
         </a>
-
         <div class="menu-toggle" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </div>
-
         <ul class="nav-links" id="navLinks">
             <li><a href="http://thewaregroup.in/#" class="active">Home</a></li>
             <li><a href="http://thewaregroup.in/academy">Academy</a></li>
@@ -1397,14 +1108,16 @@ header {
     </div>
 </header>
 
-<!-- ============================================================
-HERO SECTION — TRADING THEME BACKGROUND
-============================================================ -->
+<!-- ===== HERO SECTION ===== -->
 <section class="hero-section">
     <div class="hero-content">
-        <span class="tag">THE WARE GROUP • INVESTMENT & ACADEMY</span>
+        <span class="tag">🏆 THE WARE GROUP</span>
         <h1>Master The Markets. Build <span class="highlight">Lasting Wealth</span></h1>
-        <p>Professional trading education, investment guidance, and wealth-building strategies from a NISM Certified mentor with 10+ years of market experience.</p>
+        <p>
+            Professional trading education, investment guidance, and wealth-building strategies from a 
+            <span class="keyword-highlight">NISM Certified</span> mentor with 10+ years of market experience. 
+            We are the <span class="keyword-highlight">best stock market institute in Pune</span>.
+        </p>
         <div class="hero-buttons">
             <a href="http://thewaregroup.in/academy" class="btn-gold">Explore Academy</a>
             <a href="http://thewaregroup.in/academy" class="btn-outline-white">Book Consultation</a>
@@ -1412,16 +1125,67 @@ HERO SECTION — TRADING THEME BACKGROUND
     </div>
 </section>
 
-<!-- ============================================================
-ADMISSION FORM SECTION (New — Banner ke neeche)
-============================================================ -->
+<!-- ===== FOUNDER STORY SECTION (IMAGE PROPERLY ADJUSTED) ===== -->
+<section class="founder-story-section">
+    <div class="founder-story-wrapper">
+        <span class="story-tag">🌟 The Founder's Story</span>
+        <h2 class="story-title">A Journey from <span class="highlight">Zero</span> to the <span class="highlight">Zenith</span></h2>
+        <div class="story-grid">
+            <div class="story-text">
+                <p><span class="highlight">I was born on the sacred soil</span> where the legendary Chhatrapati Shivaji Maharaj took birth — <span class="highlight">Junnar (Shivneri), Pune</span>. Growing up in the shadow of Shivneri Fort, I inherited the spirit of <span class="highlight">'Swarajya'</span> — the will to build something of my own and never back down from a challenge. Carrying those values, I moved to the city and completed my graduation at the prestigious <span class="highlight">Ness Wadia College, Pune</span>.</p>
+                <p>But my destiny wasn't in a 9-to-5 desk job. My eyes were always fixed on the fluctuating numbers and the rhythm of the candlestick charts.</p>
+                <div class="quote-block">
+                    <p>"The Stock Market is not just a place to make money; it is a test of your character and patience. My mission is not just to make you a 'Trader,' but to lead you toward <span class="highlight">'Financial Sovereignty'</span>."</p>
+                    <div class="quote-author">— Vilas Ware</div>
+                </div>
+                <p><span class="highlight">The Turning Point:</span> My trading journey began in 2015. It wasn't an overnight success story. It was a path paved with sleepless nights, market crashes, and the harsh lessons of loss. To master the <span class="highlight">"language of money,"</span> I spent two crucial years (2017 to 2019) working with India's leading brokerage house, <span class="highlight">Motilal Oswal</span>. That experience was my real-world university. It taught me the secrets of the <span class="highlight">'Big Bulls'</span> — how the institutional players move and why retail traders often lose their hard-earned money.</p>
+                <p><span class="highlight">The Mission: The Ware Group</span><br />After seeing thousands of people lose their savings due to a lack of guidance and high-risk gambling in the markets, a thought struck me: <em>"If I have mastered the art of survival and profit, why not empower others?"</em></p>
+                <p>With this vision, I began teaching the art of trading in 2021. Today, I am incredibly proud that <span class="highlight">The Ware Group</span> has successfully built an army of over <span class="highlight">500+ profitable students</span> who are now trading with discipline and confidence.</p>
+                <p><span class="highlight">Join me at The Ware Group.</span> Let's decode the market together and turn your financial dreams into a living reality. <strong>Because in this market, you only earn when you learn.</strong></p>
+            </div>
+            <div class="story-image">
+                <div class="founder-card">
+                    <!-- Founder Image with Proper Adjustment -->
+                    <div class="founder-img-wrapper">
+                        <img src="https://github.com/helpwareinstitute-hash/Thewaregroupweb/blob/main/vilas%20php.webp?raw=true" alt="Vilas Ware - Founder, The Ware Group" />
+                    </div>
+                    <div class="card-body">
+                        <div class="name">Vilas Ware</div>
+                        <div class="title">Founder, The Ware Group</div>
+                        <div class="nism-badge">🏅 NISM Certified</div>
+                        <div class="social-links">
+                            <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="story-stats">
+                    <div class="stat-item">
+                        <h4 class="count-number" data-count="2015">0</h4>
+                        <p>Trading Journey Began</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4><span class="count-number" data-count="500">0</span><span class="count-suffix">+</span></h4>
+                        <p>Students Trained</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>NISM</h4>
+                        <p>Certified Mentor</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ADMISSION FORM SECTION ===== -->
 <section class="admission-section">
     <div class="admission-wrapper">
-        <!-- Left: Text Content -->
         <div class="admission-text fade-up">
-            <span class="tag">Enroll Now</span>
+            <span class="tag">📝 Enroll Now</span>
             <h2>Start Your <span class="highlight">Trading Journey</span> Today</h2>
-            <p>Fill out the admission form and take the first step towards becoming a confident trader. Our team will get in touch with you shortly.</p>
+            <p>Join the <span class="keyword-highlight">best stock market institute in Pune</span> and take the first step towards becoming a confident trader. Our <span class="keyword-highlight">share market classes</span> offer practical training with live market sessions.</p>
             <ul class="features-list">
                 <li><i class="fas fa-check-circle"></i> Expert Mentorship from NISM Certified Professionals</li>
                 <li><i class="fas fa-check-circle"></i> Practical &amp; Live Market Training</li>
@@ -1429,38 +1193,26 @@ ADMISSION FORM SECTION (New — Banner ke neeche)
                 <li><i class="fas fa-check-circle"></i> Lifetime Community Support</li>
             </ul>
         </div>
-
-        <!-- Right: Admission Form -->
         <div class="admission-form fade-up delay-1">
             <h3 class="form-title">📝 Admission Enquiry</h3>
             <p class="form-subtitle">Fill the form and we'll contact you within 24 hours</p>
-
             <form action="https://formspree.io/f/xykqgnyj" method="POST">
-                <!-- Full Name -->
                 <div class="form-group">
                     <label>Full Name <span class="required">*</span></label>
                     <input type="text" name="Full Name" placeholder="Enter your full name" required />
                 </div>
-
-                <!-- Phone Number -->
                 <div class="form-group">
                     <label>Phone Number <span class="required">*</span></label>
                     <input type="tel" name="Phone Number" placeholder="Enter your phone number" required />
                 </div>
-
-                <!-- WhatsApp Number -->
                 <div class="form-group">
                     <label>WhatsApp Number <span class="required">*</span></label>
                     <input type="tel" name="WhatsApp Number" placeholder="Enter your WhatsApp number" required />
                 </div>
-
-                <!-- Alternate Number (Optional) -->
                 <div class="form-group">
                     <label>Alternate Number <span class="optional">(optional)</span></label>
                     <input type="tel" name="Alternate Number" placeholder="Enter alternate number (if any)" />
                 </div>
-
-                <!-- Course Selection -->
                 <div class="form-group">
                     <label>Which course do you want to join? <span class="required">*</span></label>
                     <select name="Course Interested In" required>
@@ -1471,41 +1223,33 @@ ADMISSION FORM SECTION (New — Banner ke neeche)
                         <option value="All in One Stock Market">All in One Stock Market (Combo)</option>
                     </select>
                 </div>
-
-                <!-- Any Other Inquiry -->
                 <div class="form-group">
                     <label>Any Other Inquiry? <span class="optional">(optional)</span></label>
                     <textarea name="Other Inquiry" placeholder="Write your questions or special requests here..."></textarea>
                 </div>
-
-                <!-- Submit Button -->
-                <button type="submit" class="submit-btn">
-                    <i class="fas fa-paper-plane"></i> Submit Application
-                </button>
+                <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Submit Application</button>
             </form>
         </div>
     </div>
 </section>
 
-<!-- ============================================================
-STATS SECTION
-============================================================ -->
+<!-- ===== STATS SECTION (WITH COUNTING EFFECT) ===== -->
 <section class="stats-section">
     <div class="stats-grid">
         <div class="stat-item fade-up visible">
-            <h3>10+</h3>
+            <span class="count-number" data-count="10">0</span><span class="count-suffix">+</span>
             <p>Years Experience</p>
         </div>
         <div class="stat-item fade-up visible delay-1">
-            <h3>200+</h3>
+            <span class="count-number" data-count="500">0</span><span class="count-suffix">+</span>
             <p>Students Trained</p>
         </div>
         <div class="stat-item fade-up visible delay-2">
-            <h3>NISM</h3>
-            <p>Certified Mentor</p>
+            <span class="count-number" data-count="100">0</span><span class="count-suffix">%</span>
+            <p>Practical Learning</p>
         </div>
         <div class="stat-item fade-up visible delay-3">
-            <h3>4.9★</h3>
+            <span class="count-number" data-count="4.9">0</span><span class="count-suffix">★</span>
             <p>Student Satisfaction</p>
         </div>
     </div>
@@ -1513,105 +1257,85 @@ STATS SECTION
 
 <div class="section-divider"></div>
 
-<!-- ============================================================
-ABOUT SECTION
-============================================================ -->
+<!-- ===== ABOUT SECTION ===== -->
 <section class="about-section">
     <div class="about-grid">
         <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80" alt="The Ware Group Team" />
         <div class="about-text fade-up">
             <span class="tag">About Us</span>
             <h2>Building Wealth Through <span class="highlight">Knowledge</span> &amp; Discipline</h2>
-            <p>The Ware Group helps aspiring traders and investors understand markets, manage risk, and create long-term wealth. Through practical training and real-world market insights, we empower individuals to make informed financial decisions.</p>
+            <p>The Ware Group is a premier <span class="keyword-highlight">trading institute in Pune</span>, helping aspiring traders and investors understand markets, manage risk, and create long-term wealth. Our <span class="keyword-highlight">share market courses</span> offer practical training with real-world market insights.</p>
         </div>
     </div>
 </section>
 
 <div class="section-divider"></div>
 
-<!-- ============================================================
-COURSES SECTION
-============================================================ -->
+<!-- ===== COURSES SECTION ===== -->
 <section class="courses-section">
     <div class="section-title">
         <h2>Academy <span class="highlight">Programs</span></h2>
         <p>Comprehensive courses designed to build your trading &amp; investment skills</p>
     </div>
-
     <div class="courses-grid">
         <div class="course-card fade-up">
             <div class="icon"><i class="fas fa-brain"></i></div>
             <h3>Smart Money Concepts</h3>
             <p>Institutional trading logic, liquidity and market structure.</p>
+            <span class="course-tag">📍 Pune • Live Training</span>
         </div>
         <div class="course-card fade-up delay-1">
             <div class="icon"><i class="fas fa-chart-line"></i></div>
             <h3>Options &amp; Futures</h3>
             <p>Advanced derivatives strategies and risk management.</p>
+            <span class="course-tag">📍 <span class="keyword-highlight">Options Trading Course</span></span>
         </div>
         <div class="course-card fade-up delay-2">
             <div class="icon"><i class="fas fa-globe"></i></div>
             <h3>Forex Trading</h3>
             <p>Learn global currency market dynamics.</p>
+            <span class="course-tag">📍 Pune • Online &amp; Offline</span>
         </div>
         <div class="course-card fade-up delay-3">
             <div class="icon"><i class="fas fa-chart-simple"></i></div>
             <h3>Technical Analysis</h3>
             <p>Charts, indicators, trends and price action.</p>
+            <span class="course-tag">📍 <span class="keyword-highlight">Technical Analysis Classes</span></span>
         </div>
         <div class="course-card fade-up delay-1">
             <div class="icon"><i class="fas fa-graduation-cap"></i></div>
             <h3>Stock Market Foundation</h3>
             <p>Perfect for beginners entering financial markets.</p>
+            <span class="course-tag">📍 <span class="keyword-highlight">Share Market Classes</span></span>
         </div>
         <div class="course-card fade-up delay-2">
             <div class="icon"><i class="fas fa-hand-holding-usd"></i></div>
             <h3>Investment Education</h3>
             <p>Portfolio building and wealth creation principles.</p>
+            <span class="course-tag">📍 Pune • Expert Mentorship</span>
         </div>
     </div>
 </section>
 
 <div class="section-divider"></div>
 
-<!-- ============================================================
-FOUNDER SECTION
-============================================================ -->
-<section class="founder-section">
-    <div class="founder-grid">
-        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=80" alt="Vilas Ware - Founder" />
-        <div class="founder-text fade-up">
-            <span class="tag">Founder</span>
-            <h2>Meet <span class="highlight">Vilas Ware</span></h2>
-            <p>NISM Certified Market Professional with over 10 years of experience in trading, investing and financial education. His mission is to help individuals build financial confidence through practical learning and disciplined investing.</p>
-        </div>
-    </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ============================================================
-INVESTMENT SOLUTIONS
-============================================================ -->
+<!-- ===== INVESTMENT SOLUTIONS ===== -->
 <section class="invest-section">
     <div class="invest-content">
         <h2>Investment <span class="highlight">Solutions</span></h2>
-        <p>Beyond education, we help investors build disciplined wealth creation habits through SIP planning, Mutual Funds and goal-based investing.</p>
+        <p>Beyond education, we help investors build disciplined wealth creation habits through SIP planning, Mutual Funds and goal-based investing. <span class="keyword-highlight">The Ware Group</span> is your trusted partner for stock market training.</p>
         <a href="http://thewaregroup.in/investment" class="btn-gold">Speak With Advisor</a>
     </div>
 </section>
 
 <div class="section-divider"></div>
 
-<!-- ============================================================
-TESTIMONIALS SECTION
-============================================================ -->
+<!-- ===== TESTIMONIALS ===== -->
 <section class="testimonials-section">
     <div class="section-title">
         <h2>Student <span class="highlight">Testimonials</span></h2>
         <p>What our students say about their learning journey</p>
     </div>
-
     <div class="testimonials-grid">
         <div class="testimonial-card fade-up">
             <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
@@ -1633,15 +1357,12 @@ TESTIMONIALS SECTION
 
 <div class="section-divider"></div>
 
-<!-- ============================================================
-FAQ SECTION
-============================================================ -->
+<!-- ===== FAQ ===== -->
 <section class="faq-section">
     <div class="section-title">
         <h2>Frequently Asked <span class="highlight">Questions</span></h2>
         <p>Find answers to the most common questions about our programs</p>
     </div>
-
     <div class="faq-grid">
         <div class="faq-item fade-up">
             <strong>Who can join?</strong>
@@ -1664,13 +1385,11 @@ FAQ SECTION
 
 <div class="section-divider"></div>
 
-<!-- ============================================================
-CTA SECTION
-============================================================ -->
+<!-- ===== CTA ===== -->
 <section class="cta-section">
     <div class="cta-content">
         <h2>Your Financial Growth <span class="highlight">Starts Today</span></h2>
-        <p>Join The Ware Group and start your journey towards better trading, investing and wealth creation.</p>
+        <p>Join the <span class="keyword-highlight">best stock market institute in Pune</span> and start your journey towards better trading, investing and wealth creation.</p>
         <div class="cta-buttons">
             <a href="http://thewaregroup.in/academy" class="btn-gold"><i class="fas fa-arrow-right" style="margin-right:8px;"></i> Explore Academy</a>
             <a href="http://thewaregroup.in/academy" class="btn-outline-white">Book Free Consultation</a>
@@ -1678,18 +1397,13 @@ CTA SECTION
     </div>
 </section>
 
-<!-- ============================================================
-FOOTER — CHOCOLATE BACKGROUND (FULL WIDTH)
-============================================================ -->
+<!-- ===== FOOTER ===== -->
 <footer class="footer">
     <div class="footer-grid">
         <div class="footer-col">
             <div class="brand-name">The Ware <span>Group</span></div>
-            <p class="brand-desc">
-                Academy &amp; Investment — empowering you to grow capital and character through world-class financial education and strategic investment.
-            </p>
+            <p class="brand-desc"><span class="keyword-highlight">Best Stock Market Institute in Pune</span> — Academy &amp; Investment — empowering you to grow capital and character through world-class financial education and strategic investment.</p>
         </div>
-
         <div class="footer-col">
             <h4>Quick Links</h4>
             <ul>
@@ -1700,24 +1414,15 @@ FOOTER — CHOCOLATE BACKGROUND (FULL WIDTH)
                 <li><a href="http://thewaregroup.in/investment">Investment Plans</a></li>
             </ul>
         </div>
-
         <div class="footer-col">
             <h4>Contact Us</h4>
             <p><i class="fas fa-phone" style="color:var(--gold);width:20px;"></i> <a href="tel:+919529023068" class="phone-link">+91 95290 23068</a></p>
             <p style="margin-top:0.5rem;"><i class="fas fa-envelope" style="color:var(--gold);width:20px;"></i> info@thewaregroup.in</p>
-            <p style="margin-top:0.8rem;" class="address">
-                <i class="fas fa-location-dot"></i>
-                Porwal Road, Jai Ganesh Plazza,<br />
-                A-Wing 204, Dhanori Jakat Naka,<br />
-                Pune - 411015
-            </p>
+            <p style="margin-top:0.8rem;" class="address"><i class="fas fa-location-dot"></i> Porwal Road, Jai Ganesh Plazza,<br />A-Wing 204, Dhanori Jakat Naka,<br />Pune - 411015</p>
         </div>
     </div>
-
     <div class="footer-bottom">
-        <div class="copy">
-            &copy; 2026 <strong>The Ware Group</strong> — Academy &amp; Investment. All Rights Reserved.
-        </div>
+        <div class="copy">&copy; 2026 <strong>The Ware Group</strong> — Academy &amp; Investment. All Rights Reserved.</div>
         <div class="socials">
             <a href="#"><i class="fab fa-linkedin-in"></i></a>
             <a href="#"><i class="fab fa-x-twitter"></i></a>
@@ -1756,16 +1461,81 @@ document.addEventListener('click', function(e) {
     }
 });
 
+// ============================================================
+// RAPID COUNTING EFFECT
+// ============================================================
+document.addEventListener('DOMContentLoaded', function() {
+    const counters = document.querySelectorAll('.count-number');
+    let counted = new Set();
+
+    function startCounting(counter) {
+        const target = parseFloat(counter.getAttribute('data-count'));
+        const isDecimal = target % 1 !== 0;
+        const duration = 2000;
+        const startTime = performance.now();
+
+        function updateCounter(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = eased * target;
+
+            if (isDecimal) {
+                counter.textContent = current.toFixed(1);
+            } else {
+                counter.textContent = Math.floor(current);
+            }
+
+            if (progress < 1) {
+                requestAnimationFrame(updateCounter);
+            } else {
+                if (isDecimal) {
+                    counter.textContent = target.toFixed(1);
+                } else {
+                    counter.textContent = target;
+                }
+            }
+        }
+
+        requestAnimationFrame(updateCounter);
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                if (!counted.has(counter)) {
+                    counted.add(counter);
+                    startCounting(counter);
+                }
+            }
+        });
+    }, { threshold: 0.3 });
+
+    counters.forEach(counter => observer.observe(counter));
+
+    // Also count any counters that are already visible on load
+    setTimeout(() => {
+        counters.forEach(counter => {
+            const rect = counter.getBoundingClientRect();
+            if (rect.top < window.innerHeight && !counted.has(counter)) {
+                counted.add(counter);
+                startCounting(counter);
+            }
+        });
+    }, 500);
+});
+
 // ===== SCROLL ANIMATIONS =====
 const fadeElements = document.querySelectorAll('.fade-up');
-const observer = new IntersectionObserver((entries) => {
+const observer2 = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('visible');
         }
     });
 }, { threshold: 0.15 });
-fadeElements.forEach(el => observer.observe(el));
+fadeElements.forEach(el => observer2.observe(el));
 </script>
 
 </body>
