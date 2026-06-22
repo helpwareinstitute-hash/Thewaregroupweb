@@ -38,6 +38,156 @@ img { max-width: 100%; height: auto; display: block; }
 body { padding-top: 130px; }
 @media (max-width: 768px) { body { padding-top: 110px; } }
 
+/* ============================================================
+   POPUP STYLES
+   ============================================================ */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(6px);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+}
+.popup-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+.popup-overlay .popup-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 10;
+    background: none;
+    border: none;
+}
+.popup-overlay .popup-close:hover { transform: rotate(90deg); color: var(--gold); }
+
+.popup-container {
+    background: var(--white);
+    border-radius: 28px;
+    max-width: 520px;
+    width: 92%;
+    padding: 2.5rem 2.5rem 2.8rem;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+    position: relative;
+    border: 2px solid var(--gold);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+.popup-container .popup-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--chocolate);
+    padding: 4px 16px;
+    border-radius: 40px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+}
+.popup-container .popup-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--chocolate);
+    margin-bottom: 0.2rem;
+}
+.popup-container .popup-title .highlight { color: var(--gold); }
+.popup-container .popup-subtitle {
+    color: var(--chocolate-light);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+.popup-container .form-group { margin-bottom: 1rem; }
+.popup-container .form-group label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--chocolate);
+    margin-bottom: 4px;
+}
+.popup-container .form-group label .required { color: #ff3131; }
+.popup-container .form-group input,
+.popup-container .form-group select,
+.popup-container .form-group textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 2px solid var(--gold-light);
+    border-radius: 12px;
+    font-size: 0.9rem;
+    background: var(--white);
+    color: var(--chocolate);
+    transition: 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+.popup-container .form-group input:focus,
+.popup-container .form-group select:focus,
+.popup-container .form-group textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 4px rgba(201, 168, 98, 0.15);
+}
+.popup-container .form-group textarea { resize: vertical; min-height: 60px; }
+.popup-container .form-group .optional {
+    font-size: 0.7rem;
+    color: var(--chocolate-light);
+    font-weight: 400;
+}
+.popup-container .submit-btn {
+    width: 100%;
+    background: var(--gold);
+    color: var(--white);
+    padding: 12px 24px;
+    border: none;
+    border-radius: 40px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0 4px 12px rgba(201, 168, 98, 0.3);
+    margin-top: 0.5rem;
+}
+.popup-container .submit-btn:hover { background: var(--chocolate); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(77, 46, 27, 0.2); }
+.popup-container .submit-btn i { margin-right: 8px; }
+.popup-container .popup-footer {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: var(--chocolate-light);
+}
+.popup-container .popup-footer .close-link {
+    color: var(--gold);
+    font-weight: 600;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 0.8rem;
+}
+.popup-container .popup-footer .close-link:hover { text-decoration: underline; }
+
+@media (max-width: 500px) {
+    .popup-container { padding: 1.8rem 1.5rem 2rem; }
+    .popup-container .popup-title { font-size: 1.3rem; }
+}
+
+/* Scrollbar styling for popup */
+.popup-container::-webkit-scrollbar { width: 4px; }
+.popup-container::-webkit-scrollbar-track { background: var(--gold-pale); border-radius: 10px; }
+.popup-container::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
+
 /* ----- KEYWORD HIGHLIGHT ----- */
 .keyword-highlight {
     color: var(--gold);
@@ -243,7 +393,11 @@ header {
 }
 .nav-links li a:hover { color: var(--gold); }
 .nav-links li a:hover::after { width: 100%; }
-.nav-links .btn-gold { padding: 0.5rem 1.8rem; font-size: 0.85rem; }
+.nav-links .btn-gold { 
+    padding: 0.5rem 1.8rem; 
+    font-size: 0.85rem; 
+    cursor: pointer;
+}
 .nav-links li a.active { color: var(--gold); }
 .nav-links li a.active::after { width: 100%; }
 
@@ -976,6 +1130,57 @@ header {
 </head>
 <body>
 
+<!-- ============================================================
+   POPUP — ADMISSION FORM (Auto-open on page load + Get Started)
+   ============================================================ -->
+<div class="popup-overlay" id="admissionPopup">
+    <button class="popup-close" onclick="closePopup()" aria-label="Close popup">&times;</button>
+    <div class="popup-container">
+        <div class="popup-badge">🎓 The Ware Group Academy</div>
+        <h3 class="popup-title">Start Your <span class="highlight">Trading Journey</span> Today</h3>
+        <p class="popup-subtitle">Fill the form and we'll contact you within 24 hours</p>
+
+        <form action="https://formspree.io/f/xykqgnyj" method="POST">
+            <div class="form-group">
+                <label>Full Name <span class="required">*</span></label>
+                <input type="text" name="Full Name" placeholder="Enter your full name" required />
+            </div>
+            <div class="form-group">
+                <label>Phone Number <span class="required">*</span></label>
+                <input type="tel" name="Phone Number" placeholder="Enter your phone number" required />
+            </div>
+            <div class="form-group">
+                <label>WhatsApp Number <span class="required">*</span></label>
+                <input type="tel" name="WhatsApp Number" placeholder="Enter your WhatsApp number" required />
+            </div>
+            <div class="form-group">
+                <label>Alternate Number <span class="optional">(optional)</span></label>
+                <input type="tel" name="Alternate Number" placeholder="Enter alternate number (if any)" />
+            </div>
+            <div class="form-group">
+                <label>Which course do you want to join? <span class="required">*</span></label>
+                <select name="Course Interested In" required>
+                    <option value="">— Select a course —</option>
+                    <option value="Forex Trading">Forex Trading</option>
+                    <option value="Indian Stock Market">Indian Stock Market</option>
+                    <option value="Advanced Technical Analysis">Advanced Technical Analysis</option>
+                    <option value="All in One Stock Market">All in One Stock Market (Combo)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Any Other Inquiry? <span class="optional">(optional)</span></label>
+                <textarea name="Other Inquiry" placeholder="Write your questions or special requests here..."></textarea>
+            </div>
+            <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Submit Application</button>
+        </form>
+
+        <div class="popup-footer">
+            <span>Not ready yet? </span>
+            <button class="close-link" onclick="closePopup()">Close this popup</button>
+        </div>
+    </div>
+</div>
+
 <!-- ===== STICKY WHATSAPP & CALL BUTTONS ===== -->
 <div class="sticky-buttons">
     <a href="https://wa.me/919529023068" class="sticky-btn whatsapp" target="_blank" rel="noopener noreferrer">
@@ -1004,7 +1209,7 @@ header {
             <li><a href="http://thewaregroup.in/about-us">About Us</a></li>
             <li><a href="http://thewaregroup.in/insights">Insights</a></li>
             <li><a href="http://thewaregroup.in/investment">Investment Plans</a></li>
-            <li><a href="http://thewaregroup.in/academy" class="btn-gold">Get Started</a></li>
+            <li><a href="#" class="btn-gold" onclick="openPopup(); return false;">Get Started</a></li>
         </ul>
     </nav>
 
@@ -1444,7 +1649,41 @@ header {
 </footer>
 
 <script>
-// ===== MOBILE MENU TOGGLE =====
+// ============================================================
+// POPUP FUNCTIONS
+// ============================================================
+function openPopup() {
+    document.getElementById('admissionPopup').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closePopup() {
+    document.getElementById('admissionPopup').classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+// Auto-open popup on page load with a small delay
+window.addEventListener('load', function() {
+    setTimeout(openPopup, 800);
+});
+
+// Close popup when clicking outside the popup container
+document.getElementById('admissionPopup').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closePopup();
+    }
+});
+
+// Close popup with Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closePopup();
+    }
+});
+
+// ============================================================
+// MOBILE MENU TOGGLE
+// ============================================================
 function toggleMenu() {
     const nav = document.getElementById('navLinks');
     const spans = document.querySelectorAll('.menu-toggle span');
@@ -1472,7 +1711,9 @@ document.addEventListener('click', function(e) {
     }
 });
 
-// ===== SCROLL ANIMATIONS =====
+// ============================================================
+// SCROLL ANIMATIONS
+// ============================================================
 const fadeElements = document.querySelectorAll('.fade-up');
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
