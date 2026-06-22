@@ -1,1180 +1,1488 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Academy – The Ware Group</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-    <style>
-        /* ----- RESET & BASE (FULL WIDTH) ----- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
-        }
-        html,
-        body {
-            overflow-x: hidden;
-            width: 100%;
-            background: #fcf9f5;
-            color: #3e2c1b;
-            scroll-behavior: smooth;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-        body {
-            padding-top: 130px;
-        }
-        @media (max-width: 768px) {
-            body {
-                padding-top: 110px;
-            }
-        }
-
-        /* ----- COLOR VARIABLES ----- */
-        :root {
-            --gold: #c9a862;
-            --gold-light: #e2d1a8;
-            --gold-pale: #f5efe1;
-            --chocolate: #4d2e1b;
-            --chocolate-dark: #3a2214;
-            --chocolate-light: #7a4e33;
-            --white: #ffffff;
-            --off-white: #fcf9f5;
-            --shadow: rgba(77, 46, 27, 0.08);
-        }
-
-        /* ----- BUTTONS ----- */
-        .btn-gold {
-            display: inline-block;
-            background: var(--gold);
-            color: var(--white);
-            padding: 0.7rem 2rem;
-            font-weight: 600;
-            border-radius: 40px;
-            text-decoration: none;
-            transition: 0.3s ease;
-            border: 2px solid var(--gold);
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 12px rgba(201, 168, 98, 0.3);
-            font-size: 0.95rem;
-        }
-        .btn-gold:hover {
-            background: transparent;
-            color: var(--gold);
-            border-color: var(--gold);
-            box-shadow: 0 8px 20px rgba(201, 168, 98, 0.25);
-        }
-        .btn-outline-chocolate {
-            display: inline-block;
-            background: transparent;
-            color: var(--chocolate);
-            padding: 0.7rem 2rem;
-            font-weight: 600;
-            border-radius: 40px;
-            text-decoration: none;
-            border: 2px solid var(--chocolate);
-            transition: 0.3s ease;
-            letter-spacing: 0.5px;
-            font-size: 0.95rem;
-        }
-        .btn-outline-chocolate:hover {
-            background: var(--chocolate);
-            color: var(--white);
-        }
-
-        /* ===== HEADER (FULL WIDTH) ===== */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 10000;
-            background: var(--white);
-            box-shadow: 0 2px 15px rgba(77, 46, 27, 0.08);
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            padding: 10px 30px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-        .logo-area img {
-            height: 50px;
-            width: auto;
-            display: block;
-        }
-        .logo-area .logo-text {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--chocolate);
-            letter-spacing: -0.5px;
-        }
-        .logo-area .logo-text span {
-            color: var(--gold);
-            font-weight: 300;
-        }
-
-        @media (max-width: 600px) {
-            .logo-area img {
-                height: 38px;
-            }
-            .logo-area .logo-text {
-                font-size: 1.1rem;
-            }
-            .navbar {
-                padding: 8px 15px;
-            }
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 24px;
-            align-items: center;
-        }
-        .nav-links li a {
-            text-decoration: none;
-            font-weight: 600;
-            color: var(--chocolate);
-            font-size: 0.95rem;
-            transition: 0.2s;
-            position: relative;
-        }
-        .nav-links li a::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -6px;
-            width: 0%;
-            height: 3px;
-            background: var(--gold);
-            border-radius: 10px;
-            transition: 0.3s;
-        }
-        .nav-links li a:hover {
-            color: var(--gold);
-        }
-        .nav-links li a:hover::after {
-            width: 100%;
-        }
-        .nav-links .btn-gold {
-            padding: 0.5rem 1.8rem;
-            font-size: 0.85rem;
-        }
-
-        /* Active page highlight */
-        .nav-links li a.active {
-            color: var(--gold);
-        }
-        .nav-links li a.active::after {
-            width: 100%;
-        }
-
-        /* Mobile Menu Toggle */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 6px;
-            padding: 6px;
-            z-index: 10001;
-        }
-        .menu-toggle span {
-            width: 28px;
-            height: 3px;
-            background: var(--chocolate);
-            border-radius: 3px;
-            transition: 0.3s;
-            display: block;
-        }
-
-        @media screen and (max-width: 1024px) {
-            .menu-toggle {
-                display: flex !important;
-            }
-            .nav-links {
-                display: none !important;
-                flex-direction: column;
-                position: absolute;
-                top: 72px;
-                left: 0;
-                width: 100%;
-                background: var(--white);
-                padding: 25px 0;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-                text-align: center;
-                z-index: 9999;
-                border-top: 2px solid var(--gold-pale);
-            }
-            .nav-links.active {
-                display: flex !important;
-            }
-            .nav-links li {
-                margin: 6px 0;
-                width: 100%;
-            }
-            .nav-links li a {
-                display: block;
-                padding: 8px 20px;
-                font-size: 1rem;
-            }
-            .nav-links .btn-gold {
-                display: inline-block;
-                margin: 8px auto;
-            }
-        }
-
-        /* ===== TRADINGVIEW TICKER TAPE ===== */
-        .ticker-container {
-            width: 100%;
-            background: var(--chocolate);
-            border-top: 2px solid var(--gold);
-            border-bottom: 2px solid var(--gold);
-            padding: 2px 0;
-            min-height: 48px;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        .ticker-container .tradingview-widget-container {
-            width: 100%;
-        }
-
-        .ticker-container .tradingview-widget-container iframe {
-            background: var(--chocolate) !important;
-        }
-
-        /* ============================================================
-           ACADEMY PAGE CONTENT
-           ============================================================ */
-
-        /* Page Banner / Hero */
-        .page-banner {
-            width: 100%;
-            padding: 60px 30px 50px;
-            background: linear-gradient(145deg, var(--gold-pale), var(--white));
-            border-bottom: 2px solid var(--gold-light);
-        }
-
-        .page-banner .banner-content {
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-
-        .page-banner .badge {
-            display: inline-block;
-            background: var(--gold);
-            color: var(--white);
-            font-weight: 700;
-            padding: 0.2rem 1.2rem;
-            border-radius: 40px;
-            font-size: 0.75rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-        }
-
-        .page-banner h1 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 700;
-            color: var(--chocolate);
-            line-height: 1.2;
-        }
-
-        .page-banner h1 .highlight {
-            color: var(--gold);
-            border-bottom: 4px solid var(--gold);
-            display: inline-block;
-            padding-bottom: 0.1rem;
-        }
-
-        .page-banner p {
-            font-size: 1.2rem;
-            color: var(--chocolate-light);
-            margin-top: 1rem;
-            max-width: 700px;
-        }
-
-        @media (max-width: 768px) {
-            .page-banner {
-                padding: 40px 15px 30px;
-                text-align: center;
-            }
-            .page-banner p {
-                margin-left: auto;
-                margin-right: auto;
-            }
-        }
-
-        /* Section Divider */
-        .section-divider {
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-            margin: 0;
-            opacity: 0.5;
-        }
-
-        /* ===== COURSES SECTION ===== */
-        .courses-section {
-            width: 100%;
-            padding: 60px 30px;
-        }
-
-        .courses-section .section-title {
-            text-align: center;
-            max-width: 1300px;
-            margin: 0 auto 3rem;
-        }
-
-        .courses-section .section-title h2 {
-            font-size: clamp(2rem, 3.5vw, 2.8rem);
-            color: var(--chocolate);
-        }
-
-        .courses-section .section-title h2 .highlight {
-            color: var(--gold);
-        }
-
-        .courses-section .section-title p {
-            color: var(--chocolate-light);
-            font-size: 1.1rem;
-            margin-top: 0.5rem;
-        }
-
-        .courses-grid {
-            max-width: 1300px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .course-card {
-            background: var(--white);
-            padding: 2rem 1.8rem;
-            border-radius: 28px;
-            box-shadow: 0 6px 18px var(--shadow);
-            border: 1px solid var(--gold-light);
-            transition: 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .course-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--gold), var(--chocolate));
-        }
-
-        .course-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 16px 32px rgba(201, 168, 98, 0.15);
-            border-color: var(--gold);
-        }
-
-        .course-card .icon {
-            font-size: 2.5rem;
-            color: var(--gold);
-            margin-bottom: 1rem;
-        }
-
-        .course-card .badge {
-            display: inline-block;
-            background: var(--gold-pale);
-            color: var(--chocolate);
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 0.2rem 1rem;
-            border-radius: 40px;
-            margin-bottom: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .course-card h3 {
-            color: var(--chocolate);
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .course-card .course-desc {
-            color: var(--chocolate-light);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-
-        .course-card .course-features {
-            list-style: none;
-            margin-bottom: 1.5rem;
-        }
-
-        .course-card .course-features li {
-            color: var(--chocolate-light);
-            font-size: 0.9rem;
-            padding: 0.3rem 0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .course-card .course-features li i {
-            color: var(--gold);
-            font-size: 0.8rem;
-        }
-
-        .course-card .course-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            border-top: 1px solid var(--gold-pale);
-            padding-top: 1rem;
-        }
-
-        .course-card .price {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--gold);
-        }
-
-        .course-card .price .old {
-            font-size: 0.9rem;
-            color: var(--chocolate-light);
-            text-decoration: line-through;
-            font-weight: 400;
-            margin-right: 5px;
-        }
-
-        .course-card .btn-small {
-            display: inline-block;
-            background: var(--gold);
-            color: var(--white);
-            padding: 0.5rem 1.5rem;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: 0.3s ease;
-            border: 2px solid var(--gold);
-        }
-
-        .course-card .btn-small:hover {
-            background: transparent;
-            color: var(--gold);
-        }
-
-        @media (max-width: 768px) {
-            .courses-section {
-                padding: 40px 15px;
-            }
-            .courses-grid {
-                grid-template-columns: 1fr;
-            }
-            .course-card .course-footer {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-
-        /* ===== WHY LEARN WITH US ===== */
-        .why-learn {
-            width: 100%;
-            padding: 60px 30px;
-            background: var(--white);
-        }
-
-        .why-learn .section-title {
-            text-align: center;
-            max-width: 1300px;
-            margin: 0 auto 3rem;
-        }
-
-        .why-learn .section-title h2 {
-            font-size: clamp(2rem, 3.5vw, 2.8rem);
-            color: var(--chocolate);
-        }
-
-        .why-learn .section-title h2 .highlight {
-            color: var(--gold);
-        }
-
-        .why-learn-grid {
-            max-width: 1300px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .why-learn-card {
-            background: var(--off-white);
-            padding: 2rem 1.5rem;
-            border-radius: 28px;
-            text-align: center;
-            box-shadow: 0 6px 18px var(--shadow);
-            border-left: 6px solid var(--gold);
-            transition: 0.3s ease;
-        }
-
-        .why-learn-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 32px rgba(201, 168, 98, 0.15);
-        }
-
-        .why-learn-card .icon {
-            font-size: 2.5rem;
-            color: var(--gold);
-            margin-bottom: 1rem;
-        }
-
-        .why-learn-card h4 {
-            color: var(--chocolate);
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .why-learn-card p {
-            color: var(--chocolate-light);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        @media (max-width: 768px) {
-            .why-learn {
-                padding: 40px 15px;
-            }
-        }
-
-        /* ===== CTA SECTION ===== */
-        .cta-section {
-            width: 100%;
-            padding: 60px 30px;
-            background: linear-gradient(145deg, var(--gold-pale), var(--white));
-        }
-
-        .cta-content {
-            max-width: 1300px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .cta-content h2 {
-            font-size: clamp(2rem, 3.5vw, 2.8rem);
-            color: var(--chocolate);
-            margin-bottom: 0.5rem;
-        }
-
-        .cta-content h2 .highlight {
-            color: var(--gold);
-        }
-
-        .cta-content p {
-            color: var(--chocolate-light);
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-        }
-
-        .cta-content .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        @media (max-width: 768px) {
-            .cta-section {
-                padding: 40px 15px;
-            }
-        }
-
-        /* ============================================================
-           FOOTER — CHOCOLATE BACKGROUND (FULL WIDTH)
-           ============================================================ */
-        .footer {
-            background: var(--chocolate);
-            border-top: 3px solid var(--gold);
-            padding: 3rem 30px 1.5rem;
-            width: 100%;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2.5rem;
-            margin-bottom: 2.5rem;
-            max-width: 1300px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .footer-col h4 {
-            color: var(--gold);
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 1.2rem;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-
-        .footer-col h4::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 40px;
-            height: 3px;
-            background: var(--gold);
-            border-radius: 10px;
-        }
-
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col ul li {
-            margin-bottom: 0.7rem;
-        }
-
-        .footer-col ul li a {
-            color: rgba(255, 255, 255, 0.75);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: 0.2s;
-        }
-
-        .footer-col ul li a:hover {
-            color: var(--gold);
-            padding-left: 5px;
-        }
-
-        .footer-col p {
-            color: rgba(255, 255, 255, 0.75);
-            font-size: 0.95rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-col .phone-link {
-            color: var(--gold);
-            font-size: 1.2rem;
-            font-weight: 700;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 5px;
-        }
-
-        .footer-col .phone-link:hover {
-            color: var(--white);
-        }
-
-        .footer-col .address {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
-            line-height: 1.8;
-        }
-
-        .footer-col .address i {
-            color: var(--gold);
-            width: 20px;
-        }
-
-        .footer-col .brand-name {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--white);
-        }
-
-        .footer-col .brand-name span {
-            color: var(--gold);
-        }
-
-        .footer-col .brand-desc {
-            color: rgba(255, 255, 255, 0.65);
-            font-size: 0.9rem;
-            margin-top: 0.8rem;
-            line-height: 1.6;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            padding-top: 1.5rem;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1300px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .footer-bottom .copy {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        .footer-bottom .copy strong {
-            color: var(--gold);
-        }
-
-        .footer-bottom .socials a {
-            color: rgba(255, 255, 255, 0.6);
-            margin-left: 1.5rem;
-            font-size: 1.2rem;
-            transition: 0.2s;
-            text-decoration: none;
-        }
-
-        .footer-bottom .socials a:hover {
-            color: var(--gold);
-            transform: scale(1.15);
-        }
-
-        /* Footer Responsive */
-        @media (max-width: 768px) {
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-            .footer {
-                padding: 2rem 15px 1.5rem;
-            }
-        }
-
-        @media (max-width: 500px) {
-            .footer-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .footer-col h4::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            .footer-bottom {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-            }
-            .footer-bottom .socials a {
-                margin: 0 0.8rem;
-            }
-        }
-
-        /* ===== ANIMATIONS ===== */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .delay-1 {
-            transition-delay: 0.15s;
-        }
-        .delay-2 {
-            transition-delay: 0.3s;
-        }
-        .delay-3 {
-            transition-delay: 0.45s;
-        }
-        .delay-4 {
-            transition-delay: 0.6s;
-        }
-
-        .ticker-container .tradingview-widget-container iframe {
-            background: var(--chocolate) !important;
-        }
-        .ticker-container .tradingview-widget-container {
-            background: var(--chocolate) !important;
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+<!-- ===== SEO META TAGS ===== -->
+<title>Academy – The Ware Group | Stock Market Courses in Pune</title>
+<meta name="description" content="Join The Ware Group Academy for professional stock market courses in Pune. Learn SMC, options trading, technical analysis from NISM Certified mentors." />
+<meta name="keywords" content="stock market courses Pune, trading academy Pune, share market classes, SMC training, options trading course, technical analysis classes, The Ware Group" />
+<link rel="canonical" href="https://thewaregroup.in/academy" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Academy – The Ware Group | Stock Market Courses in Pune" />
+<meta property="og:description" content="Professional stock market training from NISM Certified mentors. Learn SMC, options, technical analysis & more." />
+<meta property="og:url" content="https://thewaregroup.in/academy" />
+<meta property="og:type" content="website" />
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+<style>
+/* ----- RESET & BASE ----- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    background: #fcf9f5;
+    color: #3e2c1b;
+    scroll-behavior: smooth;
+}
+img { max-width: 100%; height: auto; display: block; }
+body { padding-top: 130px; }
+@media (max-width: 768px) { body { padding-top: 110px; } }
+
+/* ----- KEYWORD HIGHLIGHT ----- */
+.keyword-highlight {
+    color: var(--gold);
+    font-weight: 600;
+    position: relative;
+    display: inline-block;
+}
+.keyword-highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--gold);
+    border-radius: 10px;
+    opacity: 0.3;
+}
+
+/* ----- STICKY WHATSAPP & CALL BUTTONS ----- */
+.sticky-buttons {
+    position: fixed;
+    bottom: 30px;
+    right: 25px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+.sticky-btn {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    animation: pulse 2.5s infinite;
+}
+.sticky-btn.whatsapp { background: #25D366; animation-delay: 0s; }
+.sticky-btn.call { background: #ff3131; animation-delay: 0.5s; }
+.sticky-btn:hover { transform: scale(1.12); box-shadow: 0 10px 35px rgba(0,0,0,0.4); }
+.sticky-btn .tooltip {
+    position: absolute;
+    right: 72px;
+    background: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+.sticky-btn .tooltip::after {
+    content: '';
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 8px 0 8px 8px;
+    border-style: solid;
+    border-color: transparent transparent transparent rgba(0, 0, 0, 0.85);
+}
+.sticky-btn:hover .tooltip { opacity: 1; visibility: visible; right: 75px; }
+
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 6px 25px rgba(0,0,0,0.3); }
+    50% { transform: scale(1.06); box-shadow: 0 6px 35px rgba(0,0,0,0.4); }
+    100% { transform: scale(1); box-shadow: 0 6px 25px rgba(0,0,0,0.3); }
+}
+@media (max-width: 768px) {
+    .sticky-buttons { bottom: 18px; right: 15px; gap: 12px; }
+    .sticky-btn { width: 50px; height: 50px; font-size: 22px; }
+    .sticky-btn .tooltip { display: none; }
+}
+
+/* ----- COLOR VARIABLES ----- */
+:root {
+    --gold: #c9a862;
+    --gold-light: #e2d1a8;
+    --gold-pale: #f5efe1;
+    --chocolate: #4d2e1b;
+    --chocolate-dark: #3a2214;
+    --chocolate-light: #7a4e33;
+    --white: #ffffff;
+    --off-white: #fcf9f5;
+    --shadow: rgba(77, 46, 27, 0.08);
+}
+
+/* ----- BUTTONS ----- */
+.btn-gold {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--white);
+    padding: 0.7rem 2rem;
+    font-weight: 600;
+    border-radius: 40px;
+    text-decoration: none;
+    transition: 0.3s ease;
+    border: 2px solid var(--gold);
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(201, 168, 98, 0.3);
+    font-size: 0.95rem;
+}
+.btn-gold:hover { background: transparent; color: var(--gold); border-color: var(--gold); box-shadow: 0 8px 20px rgba(201, 168, 98, 0.25); }
+.btn-outline-chocolate {
+    display: inline-block;
+    background: transparent;
+    color: var(--chocolate);
+    padding: 0.7rem 2rem;
+    font-weight: 600;
+    border-radius: 40px;
+    text-decoration: none;
+    border: 2px solid var(--chocolate);
+    transition: 0.3s ease;
+    letter-spacing: 0.5px;
+    font-size: 0.95rem;
+}
+.btn-outline-chocolate:hover { background: var(--chocolate); color: var(--white); }
+.btn-outline-white {
+    display: inline-block;
+    background: transparent;
+    color: var(--white);
+    padding: 0.7rem 2rem;
+    font-weight: 600;
+    border-radius: 40px;
+    text-decoration: none;
+    border: 2px solid var(--white);
+    transition: 0.3s ease;
+    letter-spacing: 0.5px;
+    font-size: 0.95rem;
+}
+.btn-outline-white:hover { background: var(--white); color: var(--chocolate); }
+
+/* ===== HEADER ===== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10000;
+    background: var(--white);
+    box-shadow: 0 2px 15px rgba(77, 46, 27, 0.08);
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 30px;
+    margin: 0 auto;
+    position: relative;
+}
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+.logo-area img { height: 50px; width: auto; display: block; }
+.logo-area .logo-text { font-size: 1.5rem; font-weight: 700; color: var(--chocolate); letter-spacing: -0.5px; }
+.logo-area .logo-text span { color: var(--gold); font-weight: 300; }
+
+@media (max-width: 600px) {
+    .logo-area img { height: 38px; }
+    .logo-area .logo-text { font-size: 1.1rem; }
+    .navbar { padding: 8px 15px; }
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 24px;
+    align-items: center;
+}
+.nav-links li a {
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--chocolate);
+    font-size: 0.95rem;
+    transition: 0.2s;
+    position: relative;
+}
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    height: 3px;
+    background: var(--gold);
+    border-radius: 10px;
+    transition: 0.3s;
+}
+.nav-links li a:hover { color: var(--gold); }
+.nav-links li a:hover::after { width: 100%; }
+.nav-links .btn-gold { padding: 0.5rem 1.8rem; font-size: 0.85rem; }
+.nav-links li a.active { color: var(--gold); }
+.nav-links li a.active::after { width: 100%; }
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 6px;
+    padding: 6px;
+    z-index: 10001;
+}
+.menu-toggle span { width: 28px; height: 3px; background: var(--chocolate); border-radius: 3px; transition: 0.3s; display: block; }
+
+@media screen and (max-width: 1024px) {
+    .menu-toggle { display: flex !important; }
+    .nav-links {
+        display: none !important;
+        flex-direction: column;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        padding: 25px 0;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+        text-align: center;
+        z-index: 9999;
+        border-top: 2px solid var(--gold-pale);
+    }
+    .nav-links.active { display: flex !important; }
+    .nav-links li { margin: 6px 0; width: 100%; }
+    .nav-links li a { display: block; padding: 8px 20px; font-size: 1rem; }
+    .nav-links .btn-gold { display: inline-block; margin: 8px auto; }
+}
+
+/* ===== TRADINGVIEW TICKER TAPE ===== */
+.ticker-container {
+    width: 100%;
+    background: var(--chocolate);
+    border-top: 2px solid var(--gold);
+    border-bottom: 2px solid var(--gold);
+    padding: 2px 0;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+.ticker-container .tradingview-widget-container { width: 100%; }
+.ticker-container .tradingview-widget-container iframe { background: var(--chocolate) !important; }
+
+/* ============================================================
+   SECTION DIVIDER
+   ============================================================ */
+.section-divider {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0;
+    opacity: 0.5;
+}
+
+/* ============================================================
+   1. HERO SECTION
+   ============================================================ */
+.hero-section {
+    min-height: 75vh;
+    background: 
+        linear-gradient(rgba(15, 10, 8, 0.8), rgba(15, 10, 8, 0.9)),
+        url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1600&q=80');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 40px 30px 60px;
+    width: 100%;
+    position: relative;
+}
+.hero-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 50%, rgba(201, 168, 98, 0.06) 0%, transparent 60%);
+    pointer-events: none;
+}
+.hero-section .hero-content {
+    max-width: 1300px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+.hero-section .tag {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--chocolate);
+    padding: 8px 20px;
+    border-radius: 40px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+}
+.hero-section h1 {
+    font-size: clamp(2.8rem, 7vw, 4.5rem);
+    font-weight: 700;
+    max-width: 900px;
+    line-height: 1.1;
+}
+.hero-section h1 .highlight { color: var(--gold); border-bottom: 4px solid var(--gold); display: inline-block; padding-bottom: 0.1rem; }
+.hero-section p {
+    max-width: 750px;
+    margin: 18px 0 30px;
+    opacity: 0.9;
+    font-size: 1.15rem;
+    line-height: 1.7;
+}
+.hero-section p .keyword-highlight { color: var(--gold); font-weight: 600; }
+.hero-section .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+@media (max-width: 768px) {
+    .hero-section { min-height: 60vh; padding: 30px 15px 40px; text-align: center; }
+    .hero-section h1 { font-size: 2.2rem; }
+    .hero-section p { margin-left: auto; margin-right: auto; }
+    .hero-section .hero-buttons { justify-content: center; }
+}
+
+/* ============================================================
+   2. WHY LEARN TRADING?
+   ============================================================ */
+.why-learn {
+    width: 100%;
+    padding: 70px 30px;
+    background: var(--white);
+}
+.why-learn .section-title {
+    text-align: center;
+    max-width: 1300px;
+    margin: 0 auto 3rem;
+}
+.why-learn .section-title h2 {
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    color: var(--chocolate);
+}
+.why-learn .section-title h2 .highlight { color: var(--gold); }
+.why-learn .section-title p {
+    color: var(--chocolate-light);
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+.why-grid {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+.why-card {
+    background: var(--off-white);
+    padding: 2rem 1.8rem;
+    border-radius: 28px;
+    box-shadow: 0 6px 18px var(--shadow);
+    border-left: 6px solid var(--gold);
+    transition: 0.3s ease;
+}
+.why-card:hover { transform: translateY(-6px); box-shadow: 0 16px 32px rgba(201, 168, 98, 0.15); }
+.why-card .icon { font-size: 2.5rem; color: var(--gold); margin-bottom: 1rem; }
+.why-card h4 { color: var(--chocolate); font-size: 1.2rem; margin-bottom: 0.5rem; }
+.why-card p { color: var(--chocolate-light); font-size: 0.95rem; line-height: 1.6; }
+@media (max-width: 768px) { .why-learn { padding: 40px 15px; } }
+
+/* ============================================================
+   3. PROGRAMS OVERVIEW
+   ============================================================ */
+.programs-overview {
+    width: 100%;
+    padding: 70px 30px;
+    background: var(--gold-pale);
+}
+.programs-overview .section-title {
+    text-align: center;
+    max-width: 1300px;
+    margin: 0 auto 3rem;
+}
+.programs-overview .section-title h2 {
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    color: var(--chocolate);
+}
+.programs-overview .section-title h2 .highlight { color: var(--gold); }
+.programs-overview .section-title p {
+    color: var(--chocolate-light);
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+.programs-grid {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+}
+.program-card {
+    background: var(--white);
+    padding: 2rem 1.5rem;
+    border-radius: 28px;
+    text-align: center;
+    box-shadow: 0 6px 18px var(--shadow);
+    border: 1px solid var(--gold-light);
+    transition: 0.3s ease;
+}
+.program-card:hover { transform: translateY(-6px); box-shadow: 0 16px 32px rgba(201, 168, 98, 0.15); border-color: var(--gold); }
+.program-card .icon { font-size: 2.5rem; color: var(--gold); margin-bottom: 0.8rem; }
+.program-card h4 { color: var(--chocolate); font-size: 1.1rem; margin-bottom: 0.3rem; }
+.program-card p { color: var(--chocolate-light); font-size: 0.9rem; line-height: 1.5; }
+@media (max-width: 768px) { .programs-overview { padding: 40px 15px; } }
+
+/* ============================================================
+   4. DETAILED COURSES
+   ============================================================ */
+.detailed-courses {
+    width: 100%;
+    padding: 70px 30px;
+    background: var(--white);
+}
+.detailed-courses .section-title {
+    text-align: center;
+    max-width: 1300px;
+    margin: 0 auto 3rem;
+}
+.detailed-courses .section-title h2 {
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    color: var(--chocolate);
+}
+.detailed-courses .section-title h2 .highlight { color: var(--gold); }
+.detailed-courses .section-title p {
+    color: var(--chocolate-light);
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+.courses-grid {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+.course-card {
+    background: var(--off-white);
+    padding: 2rem 1.8rem;
+    border-radius: 28px;
+    box-shadow: 0 6px 18px var(--shadow);
+    border-left: 6px solid var(--gold);
+    transition: 0.3s ease;
+}
+.course-card:hover { transform: translateY(-6px); box-shadow: 0 16px 32px rgba(201, 168, 98, 0.15); }
+.course-card .icon { font-size: 2rem; color: var(--gold); margin-bottom: 0.8rem; }
+.course-card h3 { color: var(--chocolate); font-size: 1.2rem; margin-bottom: 0.5rem; }
+.course-card p { color: var(--chocolate-light); font-size: 0.95rem; line-height: 1.6; }
+.course-card .course-tag {
+    display: inline-block;
+    background: var(--gold-pale);
+    color: var(--chocolate);
+    font-size: 0.6rem;
+    font-weight: 700;
+    padding: 2px 12px;
+    border-radius: 40px;
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+@media (max-width: 900px) { .courses-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .courses-grid { grid-template-columns: 1fr; } }
+@media (max-width: 768px) { .detailed-courses { padding: 40px 15px; } }
+
+/* ============================================================
+   5. LEARNING METHODOLOGY
+   ============================================================ */
+.learning-methodology {
+    width: 100%;
+    padding: 70px 30px;
+    background: linear-gradient(145deg, var(--gold-pale), var(--white));
+}
+.learning-methodology .section-title {
+    text-align: center;
+    max-width: 1300px;
+    margin: 0 auto 3rem;
+}
+.learning-methodology .section-title h2 {
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    color: var(--chocolate);
+}
+.learning-methodology .section-title h2 .highlight { color: var(--gold); }
+.learning-methodology .section-title p {
+    color: var(--chocolate-light);
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+.method-grid {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+}
+.method-card {
+    background: var(--white);
+    padding: 2rem 1.5rem;
+    border-radius: 28px;
+    text-align: center;
+    box-shadow: 0 6px 18px var(--shadow);
+    border: 1px solid var(--gold-light);
+    transition: 0.3s ease;
+}
+.method-card:hover { transform: translateY(-6px); box-shadow: 0 16px 32px rgba(201, 168, 98, 0.15); }
+.method-card .step { 
+    display: inline-block; 
+    background: var(--gold); 
+    color: var(--white); 
+    font-size: 1.5rem; 
+    font-weight: 700; 
+    width: 50px; 
+    height: 50px; 
+    line-height: 50px; 
+    border-radius: 50%; 
+    margin-bottom: 1rem; 
+}
+.method-card h4 { color: var(--chocolate); font-size: 1.1rem; margin-bottom: 0.3rem; }
+.method-card p { color: var(--chocolate-light); font-size: 0.9rem; line-height: 1.5; }
+@media (max-width: 768px) { .learning-methodology { padding: 40px 15px; } }
+
+/* ============================================================
+   6. WHO CAN JOIN?
+   ============================================================ */
+.who-can-join {
+    width: 100%;
+    padding: 70px 30px;
+    background: var(--white);
+}
+.who-can-join .section-title {
+    text-align: center;
+    max-width: 1300px;
+    margin: 0 auto 3rem;
+}
+.who-can-join .section-title h2 {
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    color: var(--chocolate);
+}
+.who-can-join .section-title h2 .highlight { color: var(--gold); }
+.who-can-join .section-title p {
+    color: var(--chocolate-light);
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+.who-grid {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+.who-card {
+    background: var(--off-white);
+    padding: 1.8rem 1.5rem;
+    border-radius: 28px;
+    text-align: center;
+    box-shadow: 0 6px 18px var(--shadow);
+    border-left: 6px solid var(--gold);
+    transition: 0.3s ease;
+}
+.who-card:hover { transform: translateY(-6px); box-shadow: 0 16px 32px rgba(201, 168, 98, 0.15); }
+.who-card .icon { font-size: 2.5rem; color: var(--gold); margin-bottom: 0.8rem; }
+.who-card h4 { color: var(--chocolate); font-size: 1.1rem; }
+@media (max-width: 768px) { .who-can-join { padding: 40px 15px; } }
+
+/* ============================================================
+   7. STUDENT BENEFITS
+   ============================================================ */
+.student-benefits {
+    width: 100%;
+    padding: 70px 30px;
+    background: var(--gold-pale);
+}
+.student-benefits .section-title {
+    text-align: center;
+    max-width: 1300px;
+    margin: 0 auto 3rem;
+}
+.student-benefits .section-title h2 {
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    color: var(--chocolate);
+}
+.student-benefits .section-title h2 .highlight { color: var(--gold); }
+.student-benefits .section-title p {
+    color: var(--chocolate-light);
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+.benefits-grid {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+.benefit-card {
+    background: var(--white);
+    padding: 2rem 1.8rem;
+    border-radius: 28px;
+    box-shadow: 0 6px 18px var(--shadow);
+    border: 1px solid var(--gold-light);
+    transition: 0.3s ease;
+    display: flex;
+    align-items: start;
+    gap: 16px;
+}
+.benefit-card:hover { transform: translateY(-6px); box-shadow: 0 16px 32px rgba(201, 168, 98, 0.15); }
+.benefit-card .icon { font-size: 1.8rem; color: var(--gold); min-width: 45px; }
+.benefit-card .text h4 { color: var(--chocolate); font-size: 1.1rem; margin-bottom: 0.2rem; }
+.benefit-card .text p { color: var(--chocolate-light); font-size: 0.9rem; line-height: 1.5; }
+@media (max-width: 768px) { .student-benefits { padding: 40px 15px; } }
+
+/* ============================================================
+   8. CERTIFICATION / MENTOR
+   ============================================================ */
+.certification-section {
+    width: 100%;
+    padding: 70px 30px;
+    background: var(--chocolate);
+    color: var(--white);
+}
+.certification-wrapper {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+.certification-text .tag {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--chocolate);
+    padding: 6px 16px;
+    border-radius: 40px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+}
+.certification-text h2 {
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    color: var(--white);
+    line-height: 1.2;
+}
+.certification-text h2 .highlight { color: var(--gold); }
+.certification-text p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-top: 1rem;
+}
+.certification-text .cert-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 1.5rem;
+}
+.certification-text .cert-badges .badge {
+    background: rgba(201, 168, 98, 0.15);
+    border: 1px solid rgba(201, 168, 98, 0.3);
+    color: var(--gold-light);
+    padding: 8px 18px;
+    border-radius: 40px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+.certification-image {
+    background: rgba(255,255,255,0.05);
+    border-radius: 25px;
+    padding: 2.5rem;
+    text-align: center;
+    border: 2px solid rgba(201, 168, 98, 0.2);
+}
+.certification-image i { font-size: 5rem; color: var(--gold); margin-bottom: 1rem; }
+.certification-image h4 { color: var(--white); font-size: 1.3rem; }
+.certification-image p { color: rgba(255,255,255,0.6); font-size: 0.9rem; }
+@media (max-width: 900px) {
+    .certification-wrapper { grid-template-columns: 1fr; gap: 30px; text-align: center; }
+    .certification-text .cert-badges { justify-content: center; }
+    .certification-section { padding: 40px 15px; }
+}
+
+/* ============================================================
+   9. TESTIMONIALS
+   ============================================================ */
+.testimonials-section {
+    width: 100%;
+    padding: 70px 30px;
+    background: var(--white);
+}
+.testimonials-section .section-title {
+    text-align: center;
+    max-width: 1300px;
+    margin: 0 auto 3rem;
+}
+.testimonials-section .section-title h2 {
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    color: var(--chocolate);
+}
+.testimonials-section .section-title h2 .highlight { color: var(--gold); }
+.testimonials-section .section-title p {
+    color: var(--chocolate-light);
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+.testimonials-grid {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+.testimonial-card {
+    background: var(--off-white);
+    padding: 2rem;
+    border-radius: 28px;
+    box-shadow: 0 6px 18px var(--shadow);
+    border: 1px solid var(--gold-light);
+    transition: 0.3s ease;
+}
+.testimonial-card:hover { transform: translateY(-6px); box-shadow: 0 16px 32px rgba(201, 168, 98, 0.15); }
+.testimonial-card .stars { color: var(--gold); font-size: 1.2rem; margin-bottom: 0.8rem; }
+.testimonial-card p { color: var(--chocolate-light); font-size: 1rem; line-height: 1.7; font-style: italic; }
+.testimonial-card .author { color: var(--chocolate); font-weight: 600; margin-top: 1rem; font-style: normal; }
+@media (max-width: 900px) { .testimonials-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .testimonials-grid { grid-template-columns: 1fr; } }
+@media (max-width: 768px) { .testimonials-section { padding: 40px 15px; } }
+
+/* ============================================================
+   10. FAQ
+   ============================================================ */
+.faq-section {
+    width: 100%;
+    padding: 70px 30px;
+    background: linear-gradient(145deg, var(--gold-pale), var(--white));
+}
+.faq-section .section-title {
+    text-align: center;
+    max-width: 1300px;
+    margin: 0 auto 3rem;
+}
+.faq-section .section-title h2 {
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    color: var(--chocolate);
+}
+.faq-section .section-title h2 .highlight { color: var(--gold); }
+.faq-section .section-title p {
+    color: var(--chocolate-light);
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+.faq-grid {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.faq-item {
+    background: var(--white);
+    padding: 1.5rem 2rem;
+    border-radius: 16px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 12px var(--shadow);
+    border-left: 4px solid var(--gold);
+    transition: 0.3s ease;
+}
+.faq-item:hover { border-left-color: var(--chocolate); }
+.faq-item strong { color: var(--chocolate); font-size: 1.05rem; display: block; margin-bottom: 5px; }
+.faq-item p { color: var(--chocolate-light); font-size: 0.95rem; line-height: 1.6; }
+@media (max-width: 768px) {
+    .faq-section { padding: 40px 15px; }
+    .faq-item { padding: 1.2rem 1.5rem; }
+}
+
+/* ============================================================
+   11. JOIN ACADEMY CTA
+   ============================================================ */
+.join-cta {
+    width: 100%;
+    padding: 70px 30px;
+    background: var(--chocolate);
+    color: var(--white);
+    text-align: center;
+}
+.join-cta .cta-content { max-width: 1300px; margin: 0 auto; }
+.join-cta .cta-content h2 {
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    color: var(--white);
+}
+.join-cta .cta-content h2 .highlight { color: var(--gold); }
+.join-cta .cta-content p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 1rem auto 2rem;
+    line-height: 1.6;
+}
+.join-cta .cta-content .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+@media (max-width: 768px) { .join-cta { padding: 40px 15px; } }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+    background: var(--chocolate-dark);
+    border-top: 3px solid var(--gold);
+    padding: 3rem 30px 1.5rem;
+    width: 100%;
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.footer-col h4 {
+    color: var(--gold);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+.footer-col h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    height: 3px;
+    background: var(--gold);
+    border-radius: 10px;
+}
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 0.7rem; }
+.footer-col ul li a {
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: 0.2s;
+}
+.footer-col ul li a:hover { color: var(--gold); padding-left: 5px; }
+.footer-col p { color: rgba(255, 255, 255, 0.75); font-size: 0.95rem; margin-bottom: 0.5rem; }
+.footer-col .phone-link {
+    color: var(--gold);
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 5px;
+}
+.footer-col .phone-link:hover { color: var(--white); }
+.footer-col .address {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    line-height: 1.8;
+}
+.footer-col .address i { color: var(--gold); width: 20px; }
+.footer-col .brand-name { font-size: 1.4rem; font-weight: 700; color: var(--white); }
+.footer-col .brand-name span { color: var(--gold); }
+.footer-col .brand-desc {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.9rem;
+    margin-top: 0.8rem;
+    line-height: 1.6;
+}
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.footer-bottom .copy { font-size: 0.85rem; color: rgba(255, 255, 255, 0.5); }
+.footer-bottom .copy strong { color: var(--gold); }
+.footer-bottom .socials a {
+    color: rgba(255, 255, 255, 0.6);
+    margin-left: 1.5rem;
+    font-size: 1.2rem;
+    transition: 0.2s;
+    text-decoration: none;
+}
+.footer-bottom .socials a:hover { color: var(--gold); transform: scale(1.15); }
+
+@media (max-width: 768px) {
+    .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    .footer { padding: 2rem 15px 1.5rem; }
+}
+@media (max-width: 500px) {
+    .footer-grid { grid-template-columns: 1fr; text-align: center; }
+    .footer-col h4::after { left: 50%; transform: translateX(-50%); }
+    .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+    .footer-bottom .socials a { margin: 0 0.8rem; }
+}
+
+/* ===== ANIMATIONS ===== */
+.fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+.delay-1 { transition-delay: 0.15s; }
+.delay-2 { transition-delay: 0.3s; }
+.delay-3 { transition-delay: 0.45s; }
+
+.ticker-container .tradingview-widget-container iframe { background: var(--chocolate) !important; }
+.ticker-container .tradingview-widget-container { background: var(--chocolate) !important; }
+</style>
 </head>
 <body>
 
-    <!-- ===== HEADER (Fixed) ===== -->
-    <header>
-        <nav class="navbar">
-            <a href="http://thewaregroup.in/#" class="logo-area">
-                <img src="https://i.postimg.cc/1RDFJMZN/the-ware-trade-ticker-wipe-bg.webp" alt="The Ware Group Logo" />
-                <span class="logo-text">The Ware <span>Group</span></span>
-            </a>
+<!-- ===== STICKY WHATSAPP & CALL BUTTONS ===== -->
+<div class="sticky-buttons">
+    <a href="https://wa.me/919529023068" class="sticky-btn whatsapp" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span class="tooltip">WhatsApp Us</span>
+    </a>
+    <a href="tel:+919529023068" class="sticky-btn call">
+        <i class="fa-solid fa-phone"></i>
+        <span class="tooltip">Call Now</span>
+    </a>
+</div>
 
-            <div class="menu-toggle" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
+<!-- ===== HEADER ===== -->
+<header>
+    <nav class="navbar">
+        <a href="http://thewaregroup.in/#" class="logo-area">
+            <img src="https://i.postimg.cc/1RDFJMZN/the-ware-trade-ticker-wipe-bg.webp" alt="The Ware Group Logo" />
+            <span class="logo-text">The Ware <span>Group</span></span>
+        </a>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="http://thewaregroup.in/#">Home</a></li>
+            <li><a href="http://thewaregroup.in/academy" class="active">Academy</a></li>
+            <li><a href="http://thewaregroup.in/about-us">About Us</a></li>
+            <li><a href="http://thewaregroup.in/insights">Insights</a></li>
+            <li><a href="http://thewaregroup.in/investment">Investment Plans</a></li>
+            <li><a href="http://thewaregroup.in/academy" class="btn-gold">Get Started</a></li>
+        </ul>
+    </nav>
+
+    <!-- ===== TRADINGVIEW TICKER TAPE ===== -->
+    <div class="ticker-container">
+        <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+                {
+                    "symbols": [
+                        { "proName": "BSE:RELIANCE", "description": "RELIANCE" },
+                        { "proName": "BSE:HDFCBANK", "description": "HDFC BANK" },
+                        { "proName": "BSE:TATASTEEL", "description": "TATA STEEL" },
+                        { "proName": "BSE:SBIN", "description": "SBI" },
+                        { "proName": "BSE:TCS", "description": "TCS" },
+                        { "proName": "BSE:INFY", "description": "INFOSYS" },
+                        { "proName": "BSE:KOTAKBANK", "description": "KOTAK BANK" }
+                    ],
+                    "showSymbolLogo": true,
+                    "colorTheme": "light",
+                    "isTransparent": false,
+                    "displayMode": "compact",
+                    "locale": "in"
+                }
+            </script>
+        </div>
+    </div>
+</header>
+
+<!-- ============================================================
+   1. HERO SECTION
+   ============================================================ -->
+<section class="hero-section">
+    <div class="hero-content">
+        <span class="tag">🎓 THE WARE ACADEMY</span>
+        <h1>Learn to Trade Like <span class="highlight">The Pros</span></h1>
+        <p>
+            Master <span class="keyword-highlight">Smart Money Concepts (SMC)</span> and 
+            <span class="keyword-highlight">Institutional Trading Strategies</span> — the same ones 
+            used by big players. Get trained by <span class="keyword-highlight">NISM Certified</span> 
+            mentors with 10+ years of experience.
+        </p>
+        <div class="hero-buttons">
+            <a href="#join-cta" class="btn-gold">Enroll Now</a>
+            <a href="#faq" class="btn-outline-white">Learn More</a>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================================================
+   2. WHY LEARN TRADING?
+   ============================================================ -->
+<section class="why-learn">
+    <div class="section-title">
+        <h2>Why Learn <span class="highlight">Trading</span>?</h2>
+        <p>Understand the market, build wealth, and secure your financial future</p>
+    </div>
+    <div class="why-grid">
+        <div class="why-card fade-up">
+            <div class="icon"><i class="fas fa-chart-line"></i></div>
+            <h4>Build Long-Term Wealth</h4>
+            <p>Trading helps you create multiple income streams and build wealth that grows over time.</p>
+        </div>
+        <div class="why-card fade-up delay-1">
+            <div class="icon"><i class="fas fa-shield-alt"></i></div>
+            <h4>Financial Independence</h4>
+            <p>Learn to manage your own money and become financially self-reliant without relying on others.</p>
+        </div>
+        <div class="why-card fade-up delay-2">
+            <div class="icon"><i class="fas fa-brain"></i></div>
+            <h4>Develop Discipline &amp; Patience</h4>
+            <p>Trading teaches you emotional control, patience, and disciplined decision-making — skills that benefit all areas of life.</p>
+        </div>
+        <div class="why-card fade-up delay-3">
+            <div class="icon"><i class="fas fa-globe"></i></div>
+            <h4>Global Market Access</h4>
+            <p>Trade Indian, Forex, and Crypto markets — all from one platform with the right knowledge.</p>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================================================
+   3. PROGRAMS OVERVIEW
+   ============================================================ -->
+<section class="programs-overview">
+    <div class="section-title">
+        <h2>Programs <span class="highlight">Overview</span></h2>
+        <p>Choose the program that fits your goals and experience level</p>
+    </div>
+    <div class="programs-grid">
+        <div class="program-card fade-up">
+            <div class="icon"><i class="fas fa-seedling"></i></div>
+            <h4>Beginner</h4>
+            <p>Start from scratch with foundation courses designed for absolute beginners.</p>
+        </div>
+        <div class="program-card fade-up delay-1">
+            <div class="icon"><i class="fas fa-chart-simple"></i></div>
+            <h4>Intermediate</h4>
+            <p>Build on your knowledge with technical analysis and options strategies.</p>
+        </div>
+        <div class="program-card fade-up delay-2">
+            <div class="icon"><i class="fas fa-crown"></i></div>
+            <h4>Advanced</h4>
+            <p>Master institutional trading, SMC, and professional risk management.</p>
+        </div>
+        <div class="program-card fade-up delay-3">
+            <div class="icon"><i class="fas fa-rocket"></i></div>
+            <h4>Pro Combo</h4>
+            <p>All courses combined with 1-on-1 mentorship and lifetime access.</p>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================================================
+   4. DETAILED COURSES
+   ============================================================ -->
+<section class="detailed-courses">
+    <div class="section-title">
+        <h2>Detailed <span class="highlight">Courses</span></h2>
+        <p>Comprehensive training designed to turn you into a professional trader</p>
+    </div>
+    <div class="courses-grid">
+        <div class="course-card fade-up">
+            <div class="icon"><i class="fas fa-brain"></i></div>
+            <h3>Smart Money Concepts (SMC)</h3>
+            <p>Institutional trading logic, liquidity, market structure, and smart money entries.</p>
+            <span class="course-tag">📍 Advanced</span>
+        </div>
+        <div class="course-card fade-up delay-1">
+            <div class="icon"><i class="fas fa-chart-line"></i></div>
+            <h3>Options &amp; Futures</h3>
+            <p>Advanced derivatives strategies, hedging, and risk management techniques.</p>
+            <span class="course-tag">📍 Intermediate</span>
+        </div>
+        <div class="course-card fade-up delay-2">
+            <div class="icon"><i class="fas fa-globe"></i></div>
+            <h3>Forex Trading</h3>
+            <p>Global currency market dynamics, technical analysis, and trading psychology.</p>
+            <span class="course-tag">📍 Intermediate</span>
+        </div>
+        <div class="course-card fade-up delay-3">
+            <div class="icon"><i class="fas fa-chart-simple"></i></div>
+            <h3>Technical Analysis</h3>
+            <p>Charts, indicators, trends, price action, and pattern recognition.</p>
+            <span class="course-tag">📍 Foundation</span>
+        </div>
+        <div class="course-card fade-up delay-1">
+            <div class="icon"><i class="fas fa-graduation-cap"></i></div>
+            <h3>Stock Market Foundation</h3>
+            <p>Perfect for beginners — learn market basics, terminology, and investing principles.</p>
+            <span class="course-tag">📍 Beginner</span>
+        </div>
+        <div class="course-card fade-up delay-2">
+            <div class="icon"><i class="fas fa-hand-holding-usd"></i></div>
+            <h3>Investment Education</h3>
+            <p>Portfolio building, SIP planning, mutual funds, and goal-based investing.</p>
+            <span class="course-tag">📍 Foundation</span>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================================================
+   5. LEARNING METHODOLOGY
+   ============================================================ -->
+<section class="learning-methodology">
+    <div class="section-title">
+        <h2>Learning <span class="highlight">Methodology</span></h2>
+        <p>How we transform beginners into professional traders</p>
+    </div>
+    <div class="method-grid">
+        <div class="method-card fade-up">
+            <div class="step">01</div>
+            <h4>Foundation Building</h4>
+            <p>Learn market basics, terminology, and the psychology of trading.</p>
+        </div>
+        <div class="method-card fade-up delay-1">
+            <div class="step">02</div>
+            <h4>Practical Training</h4>
+            <p>Live market sessions, real-time trades, and hands-on practice.</p>
+        </div>
+        <div class="method-card fade-up delay-2">
+            <div class="step">03</div>
+            <h4>Strategy Development</h4>
+            <p>Create your own trading plan and learn risk management techniques.</p>
+        </div>
+        <div class="method-card fade-up delay-3">
+            <div class="step">04</div>
+            <h4>Mentorship &amp; Review</h4>
+            <p>Get personalized feedback and continuous improvement guidance.</p>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================================================
+   6. WHO CAN JOIN?
+   ============================================================ -->
+<section class="who-can-join">
+    <div class="section-title">
+        <h2>Who Can <span class="highlight">Join</span>?</h2>
+        <p>Our programs are designed for everyone — no prior experience needed</p>
+    </div>
+    <div class="who-grid">
+        <div class="who-card fade-up"><div class="icon"><i class="fas fa-user-tie"></i></div><h4>Salaried Professionals</h4></div>
+        <div class="who-card fade-up delay-1"><div class="icon"><i class="fas fa-briefcase"></i></div><h4>Businessmen</h4></div>
+        <div class="who-card fade-up delay-2"><div class="icon"><i class="fas fa-user-graduate"></i></div><h4>Students</h4></div>
+        <div class="who-card fade-up delay-3"><div class="icon"><i class="fas fa-house-user"></i></div><h4>Housewives</h4></div>
+        <div class="who-card fade-up delay-1"><div class="icon"><i class="fas fa-helmet-safety"></i></div><h4>Engineers</h4></div>
+        <div class="who-card fade-up delay-2"><div class="icon"><i class="fas fa-graduation-cap"></i></div><h4>MBA Professionals</h4></div>
+        <div class="who-card fade-up delay-3"><div class="icon"><i class="fas fa-calculator"></i></div><h4>Chartered Accountants</h4></div>
+        <div class="who-card fade-up delay-1"><div class="icon"><i class="fas fa-couch"></i></div><h4>Retired Individuals</h4></div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================================================
+   7. STUDENT BENEFITS
+   ============================================================ -->
+<section class="student-benefits">
+    <div class="section-title">
+        <h2>Student <span class="highlight">Benefits</span></h2>
+        <p>What you get when you join The Ware Group Academy</p>
+    </div>
+    <div class="benefits-grid">
+        <div class="benefit-card fade-up">
+            <div class="icon"><i class="fas fa-user-tie"></i></div>
+            <div class="text">
+                <h4>Expert Mentorship</h4>
+                <p>Learn directly from NISM Certified professionals with years of market experience.</p>
             </div>
+        </div>
+        <div class="benefit-card fade-up delay-1">
+            <div class="icon"><i class="fas fa-clock"></i></div>
+            <div class="text">
+                <h4>Flexible Learning</h4>
+                <p>Choose between online or offline classes with flexible batch timings.</p>
+            </div>
+        </div>
+        <div class="benefit-card fade-up delay-2">
+            <div class="icon"><i class="fas fa-laptop"></i></div>
+            <div class="text">
+                <h4>Live Market Sessions</h4>
+                <p>Learn with real-time data and live market examples, not just theory.</p>
+            </div>
+        </div>
+        <div class="benefit-card fade-up delay-3">
+            <div class="icon"><i class="fas fa-certificate"></i></div>
+            <div class="text">
+                <h4>Certificate of Completion</h4>
+                <p>Get certified and add value to your professional profile after course completion.</p>
+            </div>
+        </div>
+        <div class="benefit-card fade-up delay-1">
+            <div class="icon"><i class="fas fa-users"></i></div>
+            <div class="text">
+                <h4>Lifetime Community</h4>
+                <p>Join our exclusive community of traders for ongoing support and networking.</p>
+            </div>
+        </div>
+        <div class="benefit-card fade-up delay-2">
+            <div class="icon"><i class="fas fa-book"></i></div>
+            <div class="text">
+                <h4>Comprehensive Resources</h4>
+                <p>Access to study materials, recorded sessions, and market research tools.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-            <ul class="nav-links" id="navLinks">
+<div class="section-divider"></div>
+
+<!-- ============================================================
+   8. CERTIFICATION / MENTOR
+   ============================================================ -->
+<section class="certification-section">
+    <div class="certification-wrapper">
+        <div class="certification-text">
+            <span class="tag">🎓 NISM Certified</span>
+            <h2>Learn from a <span class="highlight">Certified</span> Mentor</h2>
+            <p>
+                Vilas Ware is a <span class="keyword-highlight">NISM Certified Market Professional</span> 
+                with over 10 years of experience in trading, investing and financial education. 
+                His mission is to help you build financial confidence through practical learning 
+                and disciplined investing.
+            </p>
+            <div class="cert-badges">
+                <span class="badge">🏅 NISM Certified</span>
+                <span class="badge">📈 10+ Years Experience</span>
+                <span class="badge">🎯 500+ Students Trained</span>
+                <span class="badge">⭐ 4.9★ Satisfaction</span>
+            </div>
+        </div>
+        <div class="certification-image">
+            <i class="fas fa-certificate"></i>
+            <h4>NISM Certified Training</h4>
+            <p>Industry-recognized certification that adds value to your career</p>
+            <div style="margin-top:1.5rem; display:flex; justify-content:center; gap:2rem; flex-wrap:wrap;">
+                <div><i class="fas fa-check-circle" style="color:var(--gold);font-size:1.5rem;"></i><p style="font-size:0.8rem;margin-top:0.3rem;">NISM Certified</p></div>
+                <div><i class="fas fa-check-circle" style="color:var(--gold);font-size:1.5rem;"></i><p style="font-size:0.8rem;margin-top:0.3rem;">Industry Standard</p></div>
+                <div><i class="fas fa-check-circle" style="color:var(--gold);font-size:1.5rem;"></i><p style="font-size:0.8rem;margin-top:0.3rem;">Recognized Across India</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================================================
+   9. TESTIMONIALS
+   ============================================================ -->
+<section class="testimonials-section">
+    <div class="section-title">
+        <h2>Student <span class="highlight">Testimonials</span></h2>
+        <p>What our students say about their learning journey</p>
+    </div>
+    <div class="testimonials-grid">
+        <div class="testimonial-card fade-up">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p>"Excellent mentorship and practical market insights. The SMC training transformed my market understanding completely."</p>
+            <div class="author">— Rohan S., Pune</div>
+        </div>
+        <div class="testimonial-card fade-up delay-1">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p>"Highly recommended for aspiring traders and investors. The practical approach and real-world examples make all the difference."</p>
+            <div class="author">— Priya M., Mumbai</div>
+        </div>
+        <div class="testimonial-card fade-up delay-2">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p>"I went from complete beginner to confident trader. The Ware Group gave me the knowledge and discipline I needed."</p>
+            <div class="author">— Amit K., Delhi</div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================================================
+   10. FAQ
+   ============================================================ -->
+<section class="faq-section" id="faq">
+    <div class="section-title">
+        <h2>Frequently Asked <span class="highlight">Questions</span></h2>
+        <p>Find answers to the most common questions about our programs</p>
+    </div>
+    <div class="faq-grid">
+        <div class="faq-item fade-up">
+            <strong>Who can join?</strong>
+            <p>Anyone with an interest in trading and investing — from complete beginners to experienced professionals.</p>
+        </div>
+        <div class="faq-item fade-up delay-1">
+            <strong>Are classes online or offline?</strong>
+            <p>Both formats are available. We offer flexible learning options to suit your schedule and preferences.</p>
+        </div>
+        <div class="faq-item fade-up delay-2">
+            <strong>Do I need prior knowledge?</strong>
+            <p>No, we have beginner-friendly programs designed for those starting from scratch.</p>
+        </div>
+        <div class="faq-item fade-up delay-3">
+            <strong>What makes The Ware Group different?</strong>
+            <p>Our focus on practical learning, institutional strategies (SMC), and personalized mentorship sets us apart.</p>
+        </div>
+        <div class="faq-item fade-up delay-1">
+            <strong>How long are the courses?</strong>
+            <p>Courses range from 2 to 6 months depending on the program. Each includes live sessions and practice.</p>
+        </div>
+        <div class="faq-item fade-up delay-2">
+            <strong>Is there a demo class available?</strong>
+            <p>Yes, we offer a free demo class so you can experience our teaching style before enrolling.</p>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================================================
+   11. JOIN ACADEMY CTA
+   ============================================================ -->
+<section class="join-cta" id="join-cta">
+    <div class="cta-content">
+        <h2>Ready to Start Your <span class="highlight">Trading Journey</span>?</h2>
+        <p>
+            Join the <span class="keyword-highlight">best stock market institute in Pune</span> 
+            and start your journey towards better trading, investing and wealth creation.
+        </p>
+        <div class="cta-buttons">
+            <a href="http://thewaregroup.in/academy" class="btn-gold"><i class="fas fa-graduation-cap" style="margin-right:8px;"></i> Enroll Now</a>
+            <a href="http://thewaregroup.in/academy" class="btn-outline-white"><i class="fas fa-video" style="margin-right:8px;"></i> Free Demo Class</a>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+   FOOTER
+   ============================================================ -->
+<footer class="footer">
+    <div class="footer-grid">
+        <div class="footer-col">
+            <div class="brand-name">The Ware <span>Group</span></div>
+            <p class="brand-desc"><span class="keyword-highlight">Best Stock Market Institute in Pune</span> — Academy &amp; Investment — empowering you to grow capital and character through world-class financial education and strategic investment.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
                 <li><a href="http://thewaregroup.in/#">Home</a></li>
-                <li><a href="http://thewaregroup.in/academy" class="active">Academy</a></li>
+                <li><a href="http://thewaregroup.in/academy">Academy</a></li>
                 <li><a href="http://thewaregroup.in/about-us">About Us</a></li>
                 <li><a href="http://thewaregroup.in/insights">Insights</a></li>
                 <li><a href="http://thewaregroup.in/investment">Investment Plans</a></li>
-                <li><a href="http://thewaregroup.in/academy" class="btn-gold">Get Started</a></li>
             </ul>
-        </nav>
-
-        <!-- ===== TRADINGVIEW TICKER TAPE ===== -->
-        <div class="ticker-container">
-            <div class="tradingview-widget-container">
-                <div class="tradingview-widget-container__widget"></div>
-                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-                    {
-                        "symbols": [
-                            { "proName": "BSE:RELIANCE", "description": "RELIANCE" },
-                            { "proName": "BSE:HDFCBANK", "description": "HDFC BANK" },
-                            { "proName": "BSE:TATASTEEL", "description": "TATA STEEL" },
-                            { "proName": "BSE:SBIN", "description": "SBI" },
-                            { "proName": "BSE:TCS", "description": "TCS" },
-                            { "proName": "BSE:INFY", "description": "INFOSYS" },
-                            { "proName": "BSE:KOTAKBANK", "description": "KOTAK BANK" }
-                        ],
-                        "showSymbolLogo": true,
-                        "colorTheme": "light",
-                        "isTransparent": false,
-                        "displayMode": "compact",
-                        "locale": "in"
-                    }
-                </script>
-            </div>
         </div>
-    </header>
-
-    <!-- ============================================================
-    ACADEMY PAGE BANNER
-    ============================================================ -->
-    <section class="page-banner">
-        <div class="banner-content">
-            <span class="badge"><i class="fas fa-graduation-cap" style="margin-right:6px;"></i> The Ware Academy</span>
-            <h1>Learn to Trade Like <span class="highlight">The Pros</span></h1>
-            <p>
-                <strong>हिंदी:</strong> Smart Money Concepts (SMC) और Institutional Trading Strategies सीखें — 
-                जो बड़े players use करते हैं।<br />
-                <strong>English:</strong> Learn Smart Money Concepts (SMC) and Institutional Trading Strategies — 
-                the same ones used by the big players.
-            </p>
+        <div class="footer-col">
+            <h4>Contact Us</h4>
+            <p><i class="fas fa-phone" style="color:var(--gold);width:20px;"></i> <a href="tel:+919529023068" class="phone-link">+91 95290 23068</a></p>
+            <p style="margin-top:0.5rem;"><i class="fas fa-envelope" style="color:var(--gold);width:20px;"></i> info@thewaregroup.in</p>
+            <p style="margin-top:0.8rem;" class="address"><i class="fas fa-location-dot"></i> Porwal Road, Jai Ganesh Plazza,<br />A-Wing 204, Dhanori Jakat Naka,<br />Pune - 411015</p>
         </div>
-    </section>
-
-    <div class="section-divider"></div>
-
-    <!-- ============================================================
-    COURSES SECTION
-    ============================================================ -->
-    <section class="courses-section">
-        <div class="section-title">
-            <h2>Our <span class="highlight">Courses</span></h2>
-            <p>हमारे कोर्स — Designed to turn you into a professional trader</p>
+    </div>
+    <div class="footer-bottom">
+        <div class="copy">&copy; 2026 <strong>The Ware Group</strong> — Academy &amp; Investment. All Rights Reserved.</div>
+        <div class="socials">
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-x-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
         </div>
+    </div>
+</footer>
 
-        <div class="courses-grid">
-            <!-- Course 1 -->
-            <div class="course-card fade-up">
-                <div class="icon"><i class="fas fa-chart-simple"></i></div>
-                <span class="badge">Beginner to Advanced</span>
-                <h3>Stock Market Basics</h3>
-                <p class="course-desc">
-                    <strong>हिंदी:</strong> शेयर बाजार की basics से लेकर advanced trading strategies तक — 
-                    सब कुछ एक ही कोर्स में।<br /><br />
-                    <strong>English:</strong> From stock market basics to advanced trading strategies — 
-                    everything in one course.
-                </p>
-                <ul class="course-features">
-                    <li><i class="fas fa-check-circle"></i> Technical Analysis</li>
-                    <li><i class="fas fa-check-circle"></i> Fundamental Analysis</li>
-                    <li><i class="fas fa-check-circle"></i> Risk Management</li>
-                    <li><i class="fas fa-check-circle"></i> Live Market Sessions</li>
-                </ul>
-                <div class="course-footer">
-                    <div class="price"><span class="old">₹25,000</span> ₹9,999</div>
-                    <a href="http://thewaregroup.in/academy" class="btn-small">Enroll Now</a>
-                </div>
-            </div>
+<script>
+// ===== MOBILE MENU TOGGLE =====
+function toggleMenu() {
+    const nav = document.getElementById('navLinks');
+    const spans = document.querySelectorAll('.menu-toggle span');
+    nav.classList.toggle('active');
+    if (nav.classList.contains('active')) {
+        spans[0].style.transform = "rotate(45deg) translate(6px, 6px)";
+        spans[1].style.opacity = "0";
+        spans[2].style.transform = "rotate(-45deg) translate(6px, -6px)";
+    } else {
+        spans[0].style.transform = "none";
+        spans[1].style.opacity = "1";
+        spans[2].style.transform = "none";
+    }
+}
 
-            <!-- Course 2 -->
-            <div class="course-card fade-up delay-1">
-                <div class="icon"><i class="fas fa-brain"></i></div>
-                <span class="badge">Advanced</span>
-                <h3>Smart Money Concepts (SMC)</h3>
-                <p class="course-desc">
-                    <strong>हिंदी:</strong> Institutional trading logic सीखें — जो big players, hedge funds 
-                    और institutions use करते हैं।<br /><br />
-                    <strong>English:</strong> Learn institutional trading logic — used by big players, 
-                    hedge funds, and institutions.
-                </p>
-                <ul class="course-features">
-                    <li><i class="fas fa-check-circle"></i> Order Flow Analysis</li>
-                    <li><i class="fas fa-check-circle"></i> Market Structure</li>
-                    <li><i class="fas fa-check-circle"></i> Liquidity Concepts</li>
-                    <li><i class="fas fa-check-circle"></i> Smart Money Entries</li>
-                </ul>
-                <div class="course-footer">
-                    <div class="price"><span class="old">₹45,000</span> ₹24,999</div>
-                    <a href="http://thewaregroup.in/academy" class="btn-small">Enroll Now</a>
-                </div>
-            </div>
+document.addEventListener('click', function(e) {
+    const nav = document.getElementById('navLinks');
+    const toggle = document.querySelector('.menu-toggle');
+    if (nav && toggle && !nav.contains(e.target) && !toggle.contains(e.target)) {
+        nav.classList.remove('active');
+        const spans = document.querySelectorAll('.menu-toggle span');
+        spans[0].style.transform = "none";
+        spans[1].style.opacity = "1";
+        spans[2].style.transform = "none";
+    }
+});
 
-            <!-- Course 3 -->
-            <div class="course-card fade-up delay-2">
-                <div class="icon"><i class="fas fa-arrow-trend-up"></i></div>
-                <span class="badge">Pro Level</span>
-                <h3>Options Trading Mastery</h3>
-                <p class="course-desc">
-                    <strong>हिंदी:</strong> Options trading की complete mastery — strategies, Greeks, 
-                    और risk management सब कुछ।<br /><br />
-                    <strong>English:</strong> Complete mastery of options trading — strategies, 
-                    Greeks, and risk management.
-                </p>
-                <ul class="course-features">
-                    <li><i class="fas fa-check-circle"></i> Options Strategies</li>
-                    <li><i class="fas fa-check-circle"></i> Option Greeks</li>
-                    <li><i class="fas fa-check-circle"></i> Hedging Techniques</li>
-                    <li><i class="fas fa-check-circle"></i> Live Trading Sessions</li>
-                </ul>
-                <div class="course-footer">
-                    <div class="price"><span class="old">₹55,000</span> ₹34,999</div>
-                    <a href="http://thewaregroup.in/academy" class="btn-small">Enroll Now</a>
-                </div>
-            </div>
-
-            <!-- Course 4 -->
-            <div class="course-card fade-up delay-3">
-                <div class="icon"><i class="fas fa-globe"></i></div>
-                <span class="badge">International</span>
-                <h3>Forex & Crypto Trading</h3>
-                <p class="course-desc">
-                    <strong>हिंदी:</strong> Forex और Crypto markets में trading करना सीखें — 24/7 markets 
-                    में profit कमाने की strategies।<br /><br />
-                    <strong>English:</strong> Learn to trade in Forex and Crypto markets — strategies 
-                    to profit in 24/7 markets.
-                </p>
-                <ul class="course-features">
-                    <li><i class="fas fa-check-circle"></i> Currency Pairs Analysis</li>
-                    <li><i class="fas fa-check-circle"></i> Crypto Market Structure</li>
-                    <li><i class="fas fa-check-circle"></i> Global Market Timing</li>
-                    <li><i class="fas fa-check-circle"></i> Risk Management</li>
-                </ul>
-                <div class="course-footer">
-                    <div class="price"><span class="old">₹50,000</span> ₹29,999</div>
-                    <a href="http://thewaregroup.in/academy" class="btn-small">Enroll Now</a>
-                </div>
-            </div>
-
-            <!-- Course 5 -->
-            <div class="course-card fade-up delay-4">
-                <div class="icon"><i class="fas fa-users"></i></div>
-                <span class="badge">Combo Offer</span>
-                <h3>Complete Trading Bundle</h3>
-                <p class="course-desc">
-                    <strong>हिंदी:</strong> सभी कोर्स का combo — SMC + Options + Forex + Basics, 
-                    सब कुछ एक साथ।<br /><br />
-                    <strong>English:</strong> Combo of all courses — SMC + Options + Forex + Basics, 
-                    everything together.
-                </p>
-                <ul class="course-features">
-                    <li><i class="fas fa-check-circle"></i> All 4 Courses Included</li>
-                    <li><i class="fas fa-check-circle"></i> 1-on-1 Mentorship</li>
-                    <li><i class="fas fa-check-circle"></i> Lifetime Access</li>
-                    <li><i class="fas fa-check-circle"></i> Certificate of Completion</li>
-                </ul>
-                <div class="course-footer">
-                    <div class="price"><span class="old">₹1,75,000</span> ₹74,999</div>
-                    <a href="http://thewaregroup.in/academy" class="btn-small">Enroll Now</a>
-                </div>
-            </div>
-
-            <!-- Course 6 -->
-            <div class="course-card fade-up delay-4">
-                <div class="icon"><i class="fas fa-laptop"></i></div>
-                <span class="badge">Free Demo</span>
-                <h3>Free Demo Class</h3>
-                <p class="course-desc">
-                    <strong>हिंदी:</strong> हमारे teaching style को पहले experience करें — 
-                    बिना किसी charge के।<br /><br />
-                    <strong>English:</strong> Experience our teaching style first — 
-                    completely free of charge.
-                </p>
-                <ul class="course-features">
-                    <li><i class="fas fa-check-circle"></i> 1-Hour Live Session</li>
-                    <li><i class="fas fa-check-circle"></i> Q&A with Mentor</li>
-                    <li><i class="fas fa-check-circle"></i> Course Preview</li>
-                    <li><i class="fas fa-check-circle"></i> No Commitment</li>
-                </ul>
-                <div class="course-footer">
-                    <div class="price" style="color:var(--gold);">FREE</div>
-                    <a href="http://thewaregroup.in/academy" class="btn-small" style="background:var(--chocolate);border-color:var(--chocolate);">Book Now</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-    WHY LEARN WITH US
-    ============================================================ -->
-    <section class="why-learn">
-        <div class="section-title">
-            <h2>Why Learn With <span class="highlight">The Ware Academy</span></h2>
-            <p>क्यों हमसे सीखना आपके लिए फायदेमंद है — Why learning with us benefits you</p>
-        </div>
-
-        <div class="why-learn-grid">
-            <div class="why-learn-card fade-up">
-                <div class="icon"><i class="fas fa-user-tie"></i></div>
-                <h4>Expert Mentors</h4>
-                <p>12+ years of institutional trading experience. हमारे mentors ने big institutions के लिए trade किया है।</p>
-            </div>
-
-            <div class="why-learn-card fade-up delay-1">
-                <div class="icon"><i class="fas fa-certificate"></i></div>
-                <h4>NISM Certified</h4>
-                <p>Our courses are NISM certified and recognized across India. Industry-standard training.</p>
-            </div>
-
-            <div class="why-learn-card fade-up delay-2">
-                <div class="icon"><i class="fas fa-clock"></i></div>
-                <h4>Flexible Learning</h4>
-                <p>Online & Offline batches available. Weekday & Weekend options. Learn at your own pace.</p>
-            </div>
-
-            <div class="why-learn-card fade-up delay-3">
-                <div class="icon"><i class="fas fa-hand-holding-heart"></i></div>
-                <h4>Lifetime Support</h4>
-                <p>Even after course completion, we provide ongoing support and community access.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-    CTA SECTION
-    ============================================================ -->
-    <section class="cta-section">
-        <div class="cta-content">
-            <h2>Ready to Start Your <span class="highlight">Trading Journey</span>?</h2>
-            <p>
-                <strong>हिंदी:</strong> आज ही हमसे जुड़ें और अपने financial future को सुरक्षित करें।<br />
-                <strong>English:</strong> Join us today and secure your financial future.
-            </p>
-            <div class="cta-buttons">
-                <a href="http://thewaregroup.in/academy" class="btn-gold"><i class="fas fa-graduation-cap" style="margin-right:8px;"></i> Enroll Now</a>
-                <a href="http://thewaregroup.in/academy" class="btn-outline-chocolate"><i class="fas fa-video" style="margin-right:8px;"></i> Free Demo Class</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-    FOOTER — CHOCOLATE BACKGROUND (FULL WIDTH)
-    ============================================================ -->
-    <footer class="footer">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <div class="brand-name">The Ware <span>Group</span></div>
-                <p class="brand-desc">
-                    Academy & Investment — empowering you to grow capital and character through world-class financial education and strategic investment.
-                </p>
-            </div>
-
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="http://thewaregroup.in/#">Home</a></li>
-                    <li><a href="http://thewaregroup.in/academy">Academy</a></li>
-                    <li><a href="http://thewaregroup.in/about-us">About Us</a></li>
-                    <li><a href="http://thewaregroup.in/insights">Insights</a></li>
-                    <li><a href="http://thewaregroup.in/investment">Investment Plans</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>Contact Us</h4>
-                <p><i class="fas fa-phone" style="color:var(--gold);width:20px;"></i> <a href="tel:+919529023068" class="phone-link">+91 95290 23068</a></p>
-                <p style="margin-top:0.5rem;"><i class="fas fa-envelope" style="color:var(--gold);width:20px;"></i> info@thewaregroup.in</p>
-                <p style="margin-top:0.8rem;" class="address">
-                    <i class="fas fa-location-dot"></i>
-                    Porwal Road, Jai Ganesh Plazza,<br />
-                    A-Wing 204, Dhanori Jakat Naka,<br />
-                    Pune - 411015
-                </p>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <div class="copy">
-                &copy; 2026 <strong>The Ware Group</strong> — Academy & Investment. All Rights Reserved.
-            </div>
-            <div class="socials">
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fab fa-x-twitter"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // ===== MOBILE MENU TOGGLE =====
-        function toggleMenu() {
-            const nav = document.getElementById('navLinks');
-            const spans = document.querySelectorAll('.menu-toggle span');
-            nav.classList.toggle('active');
-            if (nav.classList.contains('active')) {
-                spans[0].style.transform = "rotate(45deg) translate(6px, 6px)";
-                spans[1].style.opacity = "0";
-                spans[2].style.transform = "rotate(-45deg) translate(6px, -6px)";
-            } else {
-                spans[0].style.transform = "none";
-                spans[1].style.opacity = "1";
-                spans[2].style.transform = "none";
-            }
+// ===== SCROLL ANIMATIONS =====
+const fadeElements = document.querySelectorAll('.fade-up');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
         }
-
-        document.addEventListener('click', function(e) {
-            const nav = document.getElementById('navLinks');
-            const toggle = document.querySelector('.menu-toggle');
-            if (nav && toggle && !nav.contains(e.target) && !toggle.contains(e.target)) {
-                nav.classList.remove('active');
-                const spans = document.querySelectorAll('.menu-toggle span');
-                spans[0].style.transform = "none";
-                spans[1].style.opacity = "1";
-                spans[2].style.transform = "none";
-            }
-        });
-
-        // ===== SCROLL ANIMATIONS =====
-        const fadeElements = document.querySelectorAll('.fade-up');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.15 });
-        fadeElements.forEach(el => observer.observe(el));
-    </script>
+    });
+}, { threshold: 0.15 });
+fadeElements.forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
